@@ -1,0 +1,47 @@
+                       Prefix Verb   URI Pattern                                   Controller#Action
+             new_user_session GET    /users/sign_in(.:format)                      devise/sessions#new
+                 user_session POST   /users/sign_in(.:format)                      devise/sessions#create
+         destroy_user_session DELETE /users/sign_out(.:format)                     devise/sessions#destroy
+     cancel_user_registration GET    /users/cancel(.:format)                       users/registrations#cancel
+            user_registration POST   /users(.:format)                              users/registrations#create
+        new_user_registration GET    /users/sign_up(.:format)                      users/registrations#new
+       edit_user_registration GET    /users/edit(.:format)                         users/registrations#edit
+                              PATCH  /users(.:format)                              users/registrations#update
+                              PUT    /users(.:format)                              users/registrations#update
+                              DELETE /users(.:format)                              users/registrations#destroy
+                         root GET    /                                             pages#home
+            proposal_settings GET    /proposal_settings(.:format)                  proposals/proposal_settings#index
+                              POST   /proposal_settings(.:format)                  proposals/proposal_settings#create
+         new_proposal_setting GET    /proposal_settings/new(.:format)              proposals/proposal_settings#new
+        edit_proposal_setting GET    /proposal_settings/:id/edit(.:format)         proposals/proposal_settings#edit
+             proposal_setting GET    /proposal_settings/:id(.:format)              proposals/proposal_settings#show
+                              PATCH  /proposal_settings/:id(.:format)              proposals/proposal_settings#update
+                              PUT    /proposal_settings/:id(.:format)              proposals/proposal_settings#update
+                              DELETE /proposal_settings/:id(.:format)              proposals/proposal_settings#destroy
+            proposal_services GET    /proposal_services(.:format)                  proposals/proposal_services#index
+                              POST   /proposal_services(.:format)                  proposals/proposal_services#create
+         new_proposal_service GET    /proposal_services/new(.:format)              proposals/proposal_services#new
+        edit_proposal_service GET    /proposal_services/:id/edit(.:format)         proposals/proposal_services#edit
+             proposal_service GET    /proposal_services/:id(.:format)              proposals/proposal_services#show
+                              PATCH  /proposal_services/:id(.:format)              proposals/proposal_services#update
+                              PUT    /proposal_services/:id(.:format)              proposals/proposal_services#update
+                              DELETE /proposal_services/:id(.:format)              proposals/proposal_services#destroy
+    proposal_template_headers GET    /proposal_template_headers(.:format)          proposals/proposal_template_headers#index
+                              POST   /proposal_template_headers(.:format)          proposals/proposal_template_headers#create
+ new_proposal_template_header GET    /proposal_template_headers/new(.:format)      proposals/proposal_template_headers#new
+edit_proposal_template_header GET    /proposal_template_headers/:id/edit(.:format) proposals/proposal_template_headers#edit
+     proposal_template_header GET    /proposal_template_headers/:id(.:format)      proposals/proposal_template_headers#show
+                              PATCH  /proposal_template_headers/:id(.:format)      proposals/proposal_template_headers#update
+                              PUT    /proposal_template_headers/:id(.:format)      proposals/proposal_template_headers#update
+                              DELETE /proposal_template_headers/:id(.:format)      proposals/proposal_template_headers#destroy
+             proposal_headers GET    /proposal_headers(.:format)                   proposals/proposal_headers#index
+                              POST   /proposal_headers(.:format)                   proposals/proposal_headers#create
+          new_proposal_header GET    /proposal_headers/new(.:format)               proposals/proposal_headers#new
+         edit_proposal_header GET    /proposal_headers/:id/edit(.:format)          proposals/proposal_headers#edit
+              proposal_header GET    /proposal_headers/:id(.:format)               proposals/proposal_headers#show
+                              PATCH  /proposal_headers/:id(.:format)               proposals/proposal_headers#update
+                              PUT    /proposal_headers/:id(.:format)               proposals/proposal_headers#update
+                              DELETE /proposal_headers/:id(.:format)               proposals/proposal_headers#destroy
+      proposal_headers_render POST   /proposal_headers/render(.:format)            proposals/proposal_headers#report
+                              GET    /proposal_headers/render(.:format)            redirect(301, /proposal_headers)
+                pick_template GET    /pick_template(.:format)                      proposals/pick_proposal_templates#index

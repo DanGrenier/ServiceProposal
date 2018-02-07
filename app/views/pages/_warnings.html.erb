@@ -1,0 +1,15 @@
+ <!-- If User profile is not complete, we let the user know -->
+ <div class="row">
+  <%if profile_incomplete%>
+    <div class = "panel panel-warning" id = "panel_for_invoices">  
+      <div class = "panel-heading">
+        <a href = "#", class = 'close' data-dismiss = 'alert' data-target = "#panel_for_invoices">&#215; </a>
+        Your User profile is incomplete. Please <%=link_to "Click Here", edit_user_registration_path(:id => current_user.id)%> to complete it.
+      </div>
+    </div>
+  <%end%>
+</div>   
+
+
+    
+    

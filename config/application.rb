@@ -21,6 +21,19 @@ module Proposals
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.assets.paths << Rails.root.join("vendor", "assets", "images")
+    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets")
     config.active_record.raise_in_transactional_callbacks = true
+    config.autoload_paths += %W(#{config.root}/lib) # add this line
+    config.generators do |g|
+      g.test_framework :rspec,
+      :fixtures => true,
+      :view_specs => false,
+      :helper_specs => false,
+      :routing_specs => true,
+      :controller_specs => true,
+      :request_specs => true
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end
   end
 end

@@ -1,0 +1,52 @@
+<div class="collapse navbar-collapse" id="main-nav-collapse">
+  <!-- If User is Logged In, we show the navigation links -->    
+  <% if user_signed_in? %> 
+    
+    <!-- FRANCHISE USER -->
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+          <a href ="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup = "true" aria-expanded = "false">Account<b class="caret"></b></a>
+        
+          <ul class="dropdown-menu multi-level">
+          
+            <!-- USER ACCOUNT -->
+            <li><%= link_to "User Profile", edit_user_registration_path%></li>
+            
+            
+          </ul>
+        </li>
+        
+          <!-- PrOPOSALS -->
+        <li class="dropdown">
+          <a href ="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup = "true" aria-expanded = "false">Proposals<span class="caret"></span></a>
+          <ul class="dropdown-menu multi-level">
+            <li><%= link_to "Settings", proposal_settings_path%></li>
+            <li><%= link_to "Available Services", proposal_services_path%></li>
+            <li><%= link_to "Proposal Templates", proposal_template_headers_path%></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "New Proposal", pick_template_path%></li>
+            <li><%= link_to "Proposal History", proposal_headers_path%></li>
+          </ul>
+        </li>        
+
+        
+      </ul>
+
+   
+  <%end%>
+          
+  
+  <!-- LOG OUT OR LOG IN LINKS -->        
+  <ul class="nav navbar-nav navbar-right">
+    <!-- If User is Logged In, we show the Sign Out button -->
+    <% if current_user %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary navbar-btn' %>
+      <li class="navbar-text hidden-md hidden-xs hidden-sm">User: <%=current_user.email %></li>
+    <% else %>
+      <!-- Otherwise we show the Log In button -->
+      <%= link_to "Log In", new_user_session_path, class: 'btn btn-primary navbar-btn', method: :get %>
+    <% end %>
+  </ul>
+</div><!-- /.navbar-collapse -->        
+        

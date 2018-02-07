@@ -1,0 +1,22 @@
+<% if the_object.errors.any? %>
+  <div class="row">
+    <div id="error_explanation" class = "panel panel-danger">
+      <div class = "panel-heading">
+        <h2 class = "panel-title">
+          <%= pluralize(the_object.errors.count, "error")%> prohibited this <%=objectname%> from being saved:
+        </h2>
+        <div class = "panel-body">
+          <ul>
+            <% the_object.errors.messages.values.each do |message| %>
+              <%message.each do |m|%>
+                <li> 
+                  <%= m %>
+                </li>
+              <%end%>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

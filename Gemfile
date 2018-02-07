@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Using Postgres
-gem 'pg'
+gem 'pg', '~> 0.18.4'
 
 gem 'pg_search'
 
@@ -44,6 +44,8 @@ gem 'thinreports'
 
 # Use devise for user management
 gem 'devise', '3.5.6'
+
+gem 'gon'
 
 
 # Use will paginate to paginate long results

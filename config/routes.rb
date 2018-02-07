@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {registrations: 'users/registrations'}
+
+  root 'pages#home'
+
+  resources :users
+
+
+  scope module: :proposals do 
+    resources :proposal_settings
+    resources :proposal_services
+    resources :proposal_template_headers
+    resources :proposal_headers
+    post '/proposal_headers/render' => 'proposal_headers#report'
+    get '/proposal_headers/render' => redirect('/proposal_headers')
+    get '/pick_template' => 'pick_proposal_templates#index'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,39 @@
+<!-- Padgett Logo Top Left. Only show it before we log in -->
+<% if !current_user %>
+  <div class="row">
+    <div class="col-sm-4">
+      <%=image_tag("Padgett_CC_S.png") %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class = "col-sm-12 col-xs-12">
+      <h2 align="center">Welcome to Padgett Proposals </h2>
+    </div>
+  </div>
+  
+  <div class="row">
+    &nbsp;
+  </div> 
+
+  <div class="row" id="noscript" style="color:red">
+    <p align="center">This site requires JavaScript to be enabled on you browser!</p>
+  </div>
+
+  <div class="row" id="login-buttons" style="display: none;">
+    <div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
+      <%= link_to "Log In", new_user_session_path ,class: 'btn btn-primary btn-lg btn-block' %>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+  </div>
+  
+  <!-- See if Javascript is enabled. We wont show the login buttons if not-->
+  <script>
+    document.getElementById("noscript").innerHTML="";
+    document.getElementById("login-buttons").style.display="block";
+  </script>
+<% else %>
+  <%= render :partial => 'warnings', :locals => {:profile_incomplete => @profile_incomplete} %>
+  
+<% end %>

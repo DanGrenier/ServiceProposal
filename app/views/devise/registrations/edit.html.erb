@@ -1,0 +1,177 @@
+<div class = "row">
+  <div class = "col-md-8 col-md-offset-2">
+    <%=devise_error_messages!%>
+  </div>  
+</div>  
+
+<div class = "row">
+  <div class = "col-md-8 col-md-offset-2">
+    <h3>User Profile</h3>
+  </div>
+</div>
+<div class = "row">
+  <div class = "col-md-8 col-md-offset-2">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class =>'form-horizontal'}) do |f| %>
+    <div class = "well">
+      <div class = "row">
+        <div class="col-md-12 form-group">
+          <%= f.label :email , class: "col-md-3 control-label"%>
+          <div class = "col-md-6">
+            <%= f.email_field :email, class: "form-control input-sm" , readonly: true %>
+          </div>  
+        </div>
+      </div>     
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :business_name, class: "col-md-3 control-label"%>
+          <div class = "col-md-8">
+            <%= f.text_field :business_name, class: "form-control input-sm"%>
+          </div>  
+        </div>
+      </div>
+      
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :owner_first, class: "col-md-3 control-label"%>
+          <div class = "col-md-6">
+            <%= f.text_field :owner_first, class: "form-control input-sm"%>
+          </div>
+        </div>
+        <div class = "col-md-12 form-group">
+          <%= f.label :owner_last, class: "col-md-3 control-label"%>
+          <div class = "col-md-6">
+            <%= f.text_field :owner_last, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+      
+      <br>
+      
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :address, class: "col-md-3 control-label"%>
+          <div class = "col-md-6">
+            <%= f.text_field :address, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+      
+      <div class = "row">  
+        <div class = "col-md-12 form-group">
+          <div class = "col-md-3">
+          </div>
+          <div class = "col-md-6">
+            <%= f.text_field :address2, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+      
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :city, class: "col-md-3 control-label"%>
+          <div class = "col-md-6">
+            <%= f.text_field :city, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+      
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :state, class: "col-md-3 control-label"%>
+          <div class = "col-md-2">
+            <%= f.text_field :state, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+      
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :zip_code, class: "col-md-3 control-label"%>
+          <div class = "col-md-3">
+            <%= f.text_field :zip_code, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :phone, class: "col-md-3 control-label"%>
+          <div class = "col-md-3">
+            <%= f.text_field :phone, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+      
+      <div class = "row">
+        <div class = "col-md-12 form-group">
+          <%= f.label :website, class: "col-md-3 control-label"%>
+          <div class = "col-md-6">
+            <%= f.text_field :website, class: "form-control input-sm"%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Password (If you want to change it)</h3> 
+    <div class = "well">
+      
+      <div class = "row">
+        <div class="col-md-12 form-group">
+          <div class = "col-md-3 control-label">
+            <%= f.label :password %>
+          </div>
+          <div class = "col-md-6">  
+            <%= f.password_field :password, autocomplete: "off", class: "form-control input-sm" %>
+          </div>
+          
+        </div>
+      </div>  
+      <div class = "row">
+        <div class="col-md-12 form-group">
+          <%= f.label :password_confirmation, class: "col-md-3 control-label" %>
+          <div class = "col-md-6">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-sm" %>
+          </div>  
+        </div>
+      </div> 
+    </div>
+    
+    <div class = "well">   
+      <div class = "row">
+        <div class="col-md-12 form-group">
+          <%= f.label :current_password , class: "col-md-3 control-label"%>
+          <div class = "col-md-6">
+            <%= f.password_field :current_password, autocomplete: "off", class: "form-control input-sm" %>
+          </div>
+          <div class = "col-md-3 control-label">
+            To confirm the changes
+          </div>  
+        </div>  
+      </div>
+
+      <div class="actions">
+        <div class = "row">
+          <div class = "col-md-3">
+            <%= f.submit "Update", class: "btn btn-primary btn-block" %>
+          </div>  
+        </div>  
+      </div>
+    </div>  
+    <% end %>
+    
+    <div class = "panel panel-danger">
+      <div class = "panel-heading">
+        <div class = "panel-title">  
+          <h3>Warning!</h3>
+        </div>
+        <h5>If you are unhappy, you can cancel your account by clicking on the button below!</h5>
+        <div class = "row">
+          <div class = "col-md-3">
+            <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-primary btn-block",  data: { confirm: "Are you sure?" }, method: :delete %>
+          </div>  
+        </div>  
+      </div>    
+    </div>  
+  </div>
+</div>
+
