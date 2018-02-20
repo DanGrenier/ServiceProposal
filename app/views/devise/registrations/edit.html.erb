@@ -25,7 +25,7 @@
         <div class = "col-md-12 form-group">
           <%= f.label :business_name, class: "col-md-3 control-label"%>
           <div class = "col-md-8">
-            <%= f.text_field :business_name, class: "form-control input-sm"%>
+            <%= f.text_field :business_name, class: "form-control input-sm", required: true%>
           </div>  
         </div>
       </div>
@@ -34,13 +34,13 @@
         <div class = "col-md-12 form-group">
           <%= f.label :owner_first, class: "col-md-3 control-label"%>
           <div class = "col-md-6">
-            <%= f.text_field :owner_first, class: "form-control input-sm"%>
+            <%= f.text_field :owner_first, class: "form-control input-sm", required: true%>
           </div>
         </div>
         <div class = "col-md-12 form-group">
           <%= f.label :owner_last, class: "col-md-3 control-label"%>
           <div class = "col-md-6">
-            <%= f.text_field :owner_last, class: "form-control input-sm"%>
+            <%= f.text_field :owner_last, class: "form-control input-sm", required: true%>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <div class = "col-md-12 form-group">
           <%= f.label :address, class: "col-md-3 control-label"%>
           <div class = "col-md-6">
-            <%= f.text_field :address, class: "form-control input-sm"%>
+            <%= f.text_field :address, class: "form-control input-sm", required: true%>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
         <div class = "col-md-12 form-group">
           <%= f.label :city, class: "col-md-3 control-label"%>
           <div class = "col-md-6">
-            <%= f.text_field :city, class: "form-control input-sm"%>
+            <%= f.text_field :city, class: "form-control input-sm", required: true%>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
         <div class = "col-md-12 form-group">
           <%= f.label :state, class: "col-md-3 control-label"%>
           <div class = "col-md-2">
-            <%= f.text_field :state, class: "form-control input-sm"%>
+            <%= f.text_field :state, class: "form-control input-sm", required: true%>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
         <div class = "col-md-12 form-group">
           <%= f.label :zip_code, class: "col-md-3 control-label"%>
           <div class = "col-md-3">
-            <%= f.text_field :zip_code, class: "form-control input-sm"%>
+            <%= f.text_field :zip_code, class: "form-control input-sm", required: true%>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@
         <div class = "col-md-12 form-group">
           <%= f.label :phone, class: "col-md-3 control-label"%>
           <div class = "col-md-3">
-            <%= f.text_field :phone, class: "form-control input-sm"%>
+            <%= f.text_field :phone, class: "form-control input-sm", required: true%>
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@
         <div class="col-md-12 form-group">
           <%= f.label :current_password , class: "col-md-3 control-label"%>
           <div class = "col-md-6">
-            <%= f.password_field :current_password, autocomplete: "off", class: "form-control input-sm" %>
+            <%= f.password_field :current_password, autocomplete: "off", class: "form-control input-sm", required: true %>
           </div>
           <div class = "col-md-3 control-label">
             To confirm the changes

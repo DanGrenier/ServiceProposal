@@ -6,7 +6,6 @@
     </div>
   </div>
 
-
   <div class="row">
     <div class = "col-sm-12 col-xs-12">
       <h2 align="center">Welcome to Padgett Proposals </h2>
@@ -35,5 +34,10 @@
   </script>
 <% else %>
   <%= render :partial => 'warnings', :locals => {:profile_incomplete => @profile_incomplete} %>
-  
+  <div class = "row">
+    <%= render :partial => 'statistics'%>
+  </div>    
+  <div class = "row">
+    <%= render :partial => 'recent_proposals'%>
+  </div>
 <% end %>
