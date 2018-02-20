@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206182854) do
+ActiveRecord::Schema.define(version: 20180220151638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "proposal_settings", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "return_email"
+    t.string  "tier1_name"
+    t.string  "tier2_name"
+    t.string  "tier3_name"
+    t.string  "proposal_default_text"
+  end
+
+  add_index "proposal_settings", ["user_id"], name: "proposal_settings_index", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

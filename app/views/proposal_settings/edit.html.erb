@@ -1,0 +1,8 @@
+<%= render :partial => "shared/error_handling", :locals => {:the_object => @proposal_setting, :objectname => 'Proposal Setting'} %>
+
+<div class = "row">
+  <h3>Proposal Settings</h3>
+</div>
+
+<%= render :partial =>'form', :locals => {:proposal_setting => @proposal_setting} %>
+
