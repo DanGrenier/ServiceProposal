@@ -7,31 +7,31 @@
     <div class = "proposalFactsWrap">
       <div class="item wow fadeInUpBig animated animated" data-number="100" style="visibility: visible;">
         <i class="fa fa-briefcase"></i>
-        <p id="number1" class="number">100</p>
+        <p id="number1" class="number"><%=@tot_proposals%></p>
         <span></span>
         <p>Total Proposals</p>
       </div>
       <div class="item wow fadeInUpBig animated animated" data-number="55" style="visibility: visible;">
         <i class="fa fa-hourglass-o"></i>
-        <p id="number2" class="number">55</p>
+        <p id="number2" class="number"><%=@pending_proposals%></p>
         <span></span>
         <p>Pending</p>
       </div>
       <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;">
         <i class="fa fa-thumbs-up"></i>
-        <p id="number3" class="number">359</p>
+        <p id="number3" class="number"><%=@accepted_proposals%></p>
         <span></span>
         <p>Accepted</p>
       </div>
       <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible;">
         <i class="fa fa-thumbs-down"></i>
-        <p id="number4" class="number">246</p>
+        <p id="number4" class="number"><%=@declined_proposals%></p>
         <span></span>
-        <p>Rejected</p>
+        <p>Declined</p>
       </div>
       <div class="item wow fadeInUpBig animated animated" data-number="285" style="visibility: visible;">
         <i class="fa fa-money"></i>
-        <p id="number5" class="number">$285</p>
+        <p id="number5" class="number"><%=number_to_currency(@average_fee)%></p>
         <span></span>
         <p>Average Fee</p>
       </div>

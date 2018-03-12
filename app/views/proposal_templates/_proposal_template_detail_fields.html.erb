@@ -1,0 +1,33 @@
+<tr>
+  <td align = "left" class = "text-nowrap">
+    <%= f.hidden_field :service_id %>
+    <%= AvailableService.get_desc_from_id(f.object.service_id)%>    
+  </td>
+
+  <td align = "center">
+    <%= f.check_box :tier1_applicable, :class=> "css-checkbox"%>
+    <%= f.label :tier1_applicable, :class=>"css-label" do%>
+    <%end%>
+  </td>  
+
+    
+  <td align = "center">
+    <%= f.check_box :tier2_applicable, :class=> 'css-checkbox'%>
+    <%= f.label :tier2_applicable, :class=> 'css-label' do %>
+    <%end%>
+  </td>
+  
+
+  <td align = "center">
+    <%= f.check_box :tier3_applicable, :class=> 'css-checkbox'%>
+    <%= f.label :tier3_applicable, :class=>'css-label' do %>
+    <%end%>
+  </td>
+</tr>    
+    
+
+
+
+
+
+

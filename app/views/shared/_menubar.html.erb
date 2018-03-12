@@ -22,11 +22,11 @@
           <a href ="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup = "true" aria-expanded = "false">Proposals<span class="caret"></span></a>
           <ul class="dropdown-menu multi-level">
             <li><%= link_to "Settings", edit_proposal_setting_path(ProposalSetting.get_proposal_settings(current_user.id))%></li>
-            <li><%= link_to "Available Services", '#'%></li>
-            <li><%= link_to "Proposal Templates", '#'%></li>
+            <li><%= link_to "Available Services", available_services_path%></li>
+            <li><%= link_to "Proposal Templates", proposal_templates_path%></li>
             <li role="separator" class="divider"></li>
-            <li><%= link_to "New Proposal", "#"%></li>
-            <li><%= link_to "Proposal History","#"%></li>
+            <li><%= link_to "New Proposal", pick_template_path%></li>
+            <li><%= link_to "Proposal History",proposals_path%></li>
           </ul>
         </li>        
 

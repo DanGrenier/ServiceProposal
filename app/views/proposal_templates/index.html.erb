@@ -1,0 +1,19 @@
+<div class = "row">
+  <div class="sectiontitle" style="text-align:left">
+  <h2>Proposal Templates</h2>
+  <span class="headerLine"></span>
+</div>
+
+</div>
+
+<div class = "row">
+  <div id="templates">
+    <%=render partial: 'template_list'%>
+  </div>
+</div>     
+
+<div class = "row">
+  <%=link_to new_proposal_template_path do%>
+    <button class = 'btn btn-primary'>Create Template</button>
+  <%end%>
+</div>

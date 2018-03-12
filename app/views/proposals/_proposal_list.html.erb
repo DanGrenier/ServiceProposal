@@ -1,0 +1,77 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<div style = "overflow-x: auto;">
+  <table class="table table-compact">
+    <thead>
+      <tr>
+        <th style = "text-align:left">Proposal Date</th>
+        <th style = "text-align:left">Proposal Type</th>
+        <th style = "text-align:left"><%= sortable "business_name","Business Name"%></th>
+        <th style = "text-align:left">Business Type</th>
+        <th style = "text-align:center">Quotes</th>
+        <th style = "text-align:center">Status</th>
+        <th style="text-align:center">Actions</th>
+        
+      </tr>
+    </thead>
+    <% @proposals.each do |proposal| %>
+      <tr>
+        
+        <td align="left" class = "text-nowrap">
+          <h5><%=(l proposal.created_at, format: :notime)%></h5> 
+        </td>
+        
+        <td align="left" class = "text-nowrap">
+          <h5><%=proposal.service_type_desc%></h5> 
+        </td>
+
+        <td align="left" class = "text-nowrap">
+          <h5><%=proposal.business_name%></h5> 
+        </td>
+
+        <td align="left" class = "text-nonwrap">
+          <h5><%=BusinessType.get_desc_from_id(proposal.business_type)%></h5>
+        </td>
+
+        <td align="center" class = "text-nonwrap">
+          <h5><%=number_with_precision(proposal.fee_tier1, precision: 2)%> / <%=number_with_precision(proposal.fee_tier2, precision: 2)%> / <%=number_with_precision(proposal.fee_tier3, precision: 2)%> </h5>
+        </td>
+
+        <td align = "center" class = "text-nonwrap">
+          <%case proposal.proposal_status%>
+          <%when 0%>
+            <i class="fa fa-hourglass-2 fa-2x icon-hourglass"  aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Make this proposal pending" data-placement="right" data-container="body"></i>
+          <%when 1%>          
+            <i class="fa fa-thumbs-o-up fa-2x icon-approved" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Accepted! (<%=number_to_currency(proposal.actual_fee, precision: 2)%>)" data-placement="right" data-container="body"></i>
+          <%when 2%>          
+            <i class="fa fa-thumbs-o-down fa-2x icon-declined" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Declined!" data-placement="right" data-container="body"></i>
+          <%end%>  
+
+        </td>
+     
+        <td class = "text-nowrap" align="center">
+          <%=link_to edit_proposal_path(id:proposal.id) do %> 
+            <i class="fa fa-edit fa-2x" aria-hidden="true"  data-html = "true" data-toggle="tooltip" title="Edit this proposal" data-placement ="right" data-container="body"></i>
+          <%end%>
+          &nbsp;
+          &nbsp;
+            <%=link_to proposal_path(id:proposal.id) do %> 
+              <i class="fa fa-file-text-o fa-2x" aria-hidden="true"  data-html = "true" data-toggle="tooltip" title="View proposal document" data-placement ="right" data-container="body"></i>
+            <%end%>
+          &nbsp;
+          &nbsp;      
+          <%=link_to proposal_path(proposal), method: :delete, data:{confirm: "Are you sure you want to delete this proposal?"} do %> 
+            <i class="fa fa-trash fa-2x" aria-hidden="true"  data-html = "true" data-toggle="tooltip" title="Delete this proposal" data-placement ="right" data-container="body"></i>
+          <%end%>
+        </td>
+    
+      </tr>
+     
+    <% end %>
+    
+  </table>
+
+</div>      
+
+

@@ -20,6 +20,27 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  number:
+    currency:
+      format:
+        unit: '$'
+        delimiter: ','
+        separator: '.'
+        precision: 2
+        format: '%u%n'
+  date:
+    formats:
+      default: "%m/%d/%Y"
+      notime: "%m/%d/%Y"
+    order:
+      - month
+      - day
+      - year
+
+  time:
+    formats:
+      default: "%m/%d/%Y - %l:%M:%S %p"  
+      notime: "%m/%d/%Y"  
   helpers:
     label:
       user:

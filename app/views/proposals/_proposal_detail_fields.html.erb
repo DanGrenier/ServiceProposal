@@ -1,0 +1,28 @@
+
+
+<div class = "row">
+  <div class = "col-md-5 col-sm-5 col-lg-5">
+    <%=f.hidden_field :service_id%>
+    <%= AvailableService.get_desc_from_id(f.object.service_id)%>
+  </div>
+    
+  <div class = "col-md-2 col-sm-2 col-lg-2 text-center"  >
+    <%= f.check_box :tier1_applicable, :class=> "css-checkbox"%>
+    <%= f.label :tier1_applicable, :class=>"css-label" do%>
+    <%end%>
+  </div>
+
+    <div class = "col-md-2 col-sm-2 col-lg-2 text-center">
+    <%= f.check_box :tier2_applicable, :class=> "css-checkbox"%>
+    <%= f.label :tier2_applicable, :class=>"css-label" do%>
+    <%end%>
+  </div>
+
+    <div class = "col-md-2 col-sm-2 col-lg-2 text-center">
+    <%= f.check_box :tier3_applicable, :class=> "css-checkbox"%>
+    <%= f.label :tier3_applicable, :class=>"css-label" do%>
+    <%end%>
+  </div>
+</div>
+    
+  

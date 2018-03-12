@@ -1,0 +1,62 @@
+<%=form_for @template,:html => { :multipart => true, :class =>'form-horizontal'} do |f| %>
+
+<div class = "well">
+  <div class = "row">
+  <%=f.hidden_field :user_id, :value => f.object.user_id%>
+    <div class = "col-md-6 col-sm-6 col-lg-6">
+      <div class="form-group">
+        <%=f.label :proposal_type, "Template Type", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
+          <div class = "col-sm-5 col-md-5 col-lg-3">
+            <%= f.select(:service_type, [["Full Service",1],["Accounting",2],["Tax",3]],{},{:class =>"form-control text-left input-sm"}) %>
+          </div>
+      </div>
+    </div>  
+  </div>
+  
+
+  <div class = "row">
+    <div class = "col-md-12 col-sm-12 col-lg-12">
+      <div class="form-group">
+        <%=f.label :template_description, "Description", class: 'col-md-2 col-sm-2 col-lg-2 control-label'%>
+          <div class = "col-sm-9 col-md-9 col-lg-9">
+            <%= f.text_field :template_description, class:"form-control text-left input-sm" %>
+          </div>
+      </div>
+    </div>  
+  </div>
+</div>  
+
+
+  
+
+<h3 align = "left">Services</h3>
+<div class = "well">
+  <table class = "table">
+    <thead>
+      <tr>
+        <th style = "text-align:left">Service</th>
+        <th style = "text-align:center"><%=current_user.proposal_setting.tier1_name%></th>
+        <th style = "text-align:center"><%=current_user.proposal_setting.tier2_name%></th>
+        <th style = "text-align:center"><%=current_user.proposal_setting.tier3_name%></th>
+      </tr>
+    </thead>
+    <%=f.fields_for :proposal_template_details, f.object.proposal_template_details.sort_by(&:service_id)   do |builder| %>
+      <%= render 'proposal_template_detail_fields', :f => builder %>
+    <%end%>
+  </table>
+</div>
+
+
+<br>
+<div class = "row">
+  <div class = "col-md-2 col-sm-3">
+    <div class = "actions">
+     <%= f.submit "Save" , class: 'btn btn-primary btn-block', :name => "submit" %>
+    </div>
+  </div>
+</div>
+<br>  
+
+ 
+
+<%end%>

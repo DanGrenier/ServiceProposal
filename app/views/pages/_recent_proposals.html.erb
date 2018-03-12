@@ -13,27 +13,31 @@
           <th style="text-align:center">Status</th>
         </tr>
       </thead>
-      <tr>
-        <td class="text-nowrap">
-          02/15/2018  
-        </td>
+      <%if @recent.length > 0 %>
+        <% @recent.each do |p|%>
+          <tr>
+            <td class="text-nowrap">
+              <%= (l p.created_at, format: :notime)%>
+            </td>
         
-        <td class = "text-nowrap">
-          Accounting
-        </td>
+            <td class = "text-nowrap">
+              <%= p.service_type_desc%>
+            </td>
 
-        <td class="text-nowrap">
-          John's Audio
-        </td>
+            <td class="text-nowrap">
+              <%=p.business_name%>
+            </td>
                 
-        <td class="text-nowrap" style="text-align:center">
-          $150 / $250 / $350
-        </td>
+            <td class="text-nowrap" style="text-align:center">
+              <%= number_to_currency(p.fee_tier1) + " / "+ number_to_currency(p.fee_tier2) + " / " + number_to_currency(p.fee_tier3)%>
+            </td>
                     
-        <td class="text-nowrap" style="text-align:center">
-          Pending
-        </td>
+            <td class="text-nowrap" style="text-align:center">
+              <%= p.status_desc%>
+            </td>
           
         </tr>
+        <%end%>
+      <%end%>  
     </table>
 </div>

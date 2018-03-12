@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function(){
+  $("#proposals_search input").keyup(function() 
+  {
+  	
+    $.get($("#proposals_search").attr("action"), $("#proposals_search").serialize(),  null, "script");
+      return false;
+   });
+});

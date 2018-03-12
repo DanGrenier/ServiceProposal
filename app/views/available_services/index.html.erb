@@ -1,0 +1,52 @@
+<%=link_to new_available_service_path do%>
+  <button class = 'btn btn-primary'>New Service</button>
+<%end%>
+
+<div class="sectiontitle" style="text-align:left">
+  <h2>Available Services</h2>
+  <span class="headerLine"></span>
+</div>
+
+<div style = "overflow-x: auto;">
+  <table width = "80%" class="table table-compact">
+    <thead>
+      <tr>
+        <th width = "60%" style="text-align:left">Service</th>
+        <th width = "20%" style="text-align:center">Applies To</th>
+        <th width = "20%" style="text-align:center">Actions</th>
+      </tr>
+    </thead>
+    <% if @services.length > 0 %>
+      <% @services.each do |s|%>
+        <tr>
+          <td width = "60%" class="text-nowrap">
+            <%=s.service_description%>
+          </td>
+
+          <td style="text-align:center" width = "20%" class = "text-nowrap">
+            <%= s.get_service_type_desc%>
+          </td>
+
+          <%if s.custom_service == 1 %>
+            <td align = "center" width = "20%" class = "text-nowrap">
+              <%=link_to edit_available_service_path(id: s.id) do %>
+                <i style="padding: 0px 10px 0px 10px;" class="fa fa-edit fa-2x" aria-hidden="true" data-html = "true"
+                data-toggle="tooltip" title="Edit this service" data-placement ="right" data-container="body"></i>
+              <%end%>
+              
+              <%=link_to available_service_path(s), method: :delete , data:{confirm: "Are you sure you want to delete this service?"} do %>
+                <i style="padding: 0px 10px 0px 10px;" class="fa fa-trash fa-2x" aria-hidden="true" data-html = "true" 
+                    data-toggle="tooltip"  title="Delete this service" data-placement ="right" data-container="body">
+                </i>
+              <% end %>
+            </td>
+          <%else%> 
+           <td align = "center" width = "20%"  class = "text-nowrap">
+             <i class="fa fa-lock fa-2x" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="This is a standard service code. Can't be edited or deleted" data-placement ="right" data-container="body"></i>
+            </td>       
+          <%end%>
+        </tr>
+      <%end%>
+    <%end%>
+  </table>
+</div>

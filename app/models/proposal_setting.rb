@@ -21,5 +21,5 @@ class ProposalSetting < ActiveRecord::Base
   	self.find_by(user_id: user_id)
   end
 
-
+ 
 end

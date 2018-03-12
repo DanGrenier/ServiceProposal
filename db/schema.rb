@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220151638) do
+ActiveRecord::Schema.define(version: 20180309202935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "available_services", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "service_description"
+    t.integer "service_type",        default: 1
+    t.integer "custom_service",      default: 0
+  end
+
+  create_table "business_types", force: :cascade do |t|
+    t.string "industry_code"
+    t.string "description"
+  end
+
+  create_table "proposal_details", force: :cascade do |t|
+    t.integer "proposal_id"
+    t.integer "service_id"
+    t.integer "tier1_applicable"
+    t.integer "tier2_applicable"
+    t.integer "tier3_applicable"
+  end
 
   create_table "proposal_settings", force: :cascade do |t|
     t.integer "user_id"
@@ -26,6 +46,44 @@ ActiveRecord::Schema.define(version: 20180220151638) do
   end
 
   add_index "proposal_settings", ["user_id"], name: "proposal_settings_index", unique: true, using: :btree
+
+  create_table "proposal_template_details", force: :cascade do |t|
+    t.integer "proposal_template_id"
+    t.integer "service_id"
+    t.integer "tier1_applicable",     default: 0
+    t.integer "tier2_applicable",     default: 0
+    t.integer "tier3_applicable",     default: 0
+  end
+
+  create_table "proposal_templates", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "service_type",         default: 1
+    t.string  "template_description"
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "service_type",                            default: 1
+    t.string   "business_name"
+    t.string   "address"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "contact_first"
+    t.string   "contact_last"
+    t.string   "contact_email"
+    t.integer  "business_type"
+    t.decimal  "fee_tier1",       precision: 8, scale: 2, default: 0.0
+    t.decimal  "fee_tier2",       precision: 8, scale: 2, default: 0.0
+    t.decimal  "fee_tier3",       precision: 8, scale: 2, default: 0.0
+    t.decimal  "actual_fee",      precision: 8, scale: 2, default: 0.0
+    t.text     "proposal_text"
+    t.integer  "proposal_status"
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

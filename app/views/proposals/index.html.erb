@@ -1,0 +1,26 @@
+<div class = "row">
+  <div class="sectiontitle" style="text-align:left">
+  <h2>Proposal History</h2>
+  <span class="headerLine"></span>
+</div>
+<br>
+<div class = "row">
+  <%= form_tag proposals_path, :method => 'get', :id => "proposals_search", :class =>"form-horizontal"  do %>
+    <%=label_tag "search" , "Search by Business Name", class:'control-label col-md-4 col-sm-4 col-lg-3' %>
+    <div class = "col-sm-4 col-md-4 col-lg-3">
+      <%= text_field_tag :search, params[:search], class:'form-control input-sm' %>
+    </div>
+    <div class = "col-sm-3 col-md-3 col-lg-2">
+      <%= submit_tag "Search", :business_name => nil,  class:'btn btn-primary'%>
+    </div>
+  <% end %>
+</div>    
+<br>
+
+  <div id="proposal">
+    <%=render partial: 'proposal_list'%>
+  </div>
+   
+
+
+

@@ -1,0 +1,39 @@
+
+<div style = "overflow-x: auto;">
+  <table class="table table-compact">
+    <thead>
+      <tr>
+        <th style = "text-align:left">Template Description</th>
+        <th style = "text-align:left">Template Type</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @templates.each do |template| %>
+      <tr>
+        
+        <td align="left" class = "text-nowrap">
+          <h5><%=template.template_description%></h5> 
+        </td>
+        
+        <td align="left" class = "text-nowrap">
+          <h5><%=template.service_type_desc%></h5> 
+        </td>
+     
+        <td class = "text-nowrap">
+          <%=link_to new_proposal_path(template_id:template.id) do %> 
+            <button class = 'btn btn-primary'>Use This Template</button>
+          <%end%>
+        </td>
+        
+
+        
+    
+      </tr>
+     
+    <% end %>
+    
+  </table>
+
+</div>      
+
+

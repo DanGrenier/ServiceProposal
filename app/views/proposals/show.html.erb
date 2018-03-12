@@ -1,0 +1,113 @@
+<div class = "row">
+  <div class = "col-sm-4 col-md-4 col-lg-4">
+    <%=image_tag("Padgett_CC_S.png") %>
+  </div>
+  <div class="col-sm-5 col-md-5 col-lg-5"></div>
+
+  <div class = "col-sm-3 col-md-3 col-lg-3">
+    
+      <%=link_to proposals_path do%>
+        <button class = 'btn btn-primary btn-block'>Return</button>
+      <%end%>
+      <br>
+      <%= link_to proposal_render_path(params.merge(format: 'pdf')), :method => :post do %>
+      <button class = "btn btn-danger btn-block pull-right"><i class = 'fa fa-file-pdf-o'> </i>View and Print as PDF </button>
+      <%end%>
+    
+  </div>
+</div>
+<br>
+<div class = "row">
+  <div class = "col-sm-4 col-md-4 col-lg-4">
+    <dd style = "margin-left: 5px;font-weight: 700">
+    Service Proposal for:
+    </dd>
+  </div>
+</div>    
+<br>
+<div class = "row">
+  
+    <dl class = "dl-horizontal">
+      <div class = "col-sm-4 col-md-4 col-lg-4">
+        <dd style = "margin-left: 5px;">
+          <%= @proposal.business_name%><br>
+          <%= @proposal.contact_first%> <%=@proposal.contact_last%><br>
+          <%= @proposal.address%><br>
+          <%if !@proposal.address2.blank?%>
+            <%= @proposal.address2%><br>
+          <%end%>
+          <%= @proposal.city%>, <%=@proposal.state%>, <%=@proposal.zip%><br>
+        </dd>
+      </div>
+    </dl>  
+  
+</div>  
+<br>
+<div class = "row">
+  <div class="col-md-12 col-sm-12 col-lg-12" style="white-space: pre-wrap;margin-left: 5px"><%=@proposal.proposal_text%></div>
+   
+</div>  
+<br>
+<div class = "row">
+  <div class="col-md-4 col-sm-4 col-lg-4 col-md-offset-8 col-sm-offset-8 col-lg-offset-8"><%=current_user.owner_first%> <%=current_user.owner_last%><br><%=current_user.address%><br><%if !current_user.address2.blank?%><%=current_user.address2%><br><%end%><%=current_user.city%> , <%=current_user.state%> , <%=current_user.zip_code%><br><%=number_to_phone(current_user.phone)%><br><%=current_user.proposal_setting.return_email%>
+
+  </div>
+   
+</div>  
+<br><br>
+
+<div class = "row">
+  <div class = "col-md-4 col-sm-4 col-lg-4">
+    <div class="pricing hover-effect">
+      <div class="pricing-head">
+        <h3><%=current_user.proposal_setting.tier1_name%></h3>
+          
+        <h4><%=number_to_currency(@proposal.fee_tier1)%>
+        <span>
+        Per Month </span>
+        </h4>
+      </div>
+ 
+      <%= render 'proposal_t1_detail', :p => @proposal.proposal_details.where('tier1_applicable = 1') %>
+    </div>
+  </div>  
+  
+  <div class = "col-md-4 col-sm-4 col-lg-4">
+    <div class="pricing hover-effect">
+      <div class="pricing-head">
+        <h3><%=current_user.proposal_setting.tier2_name%></h3>
+          
+        <h4><%=number_to_currency(@proposal.fee_tier2)%>
+        <span>
+        Per Month </span>
+        </h4>
+      </div>
+ 
+      <%= render 'proposal_t1_detail', :p => @proposal.proposal_details.where('tier2_applicable = 1') %>
+    </div>
+  </div>  
+  
+  <div class = "col-md-4 col-sm-4 col-lg-4">
+    <div class="pricing hover-effect">
+      <div class="pricing-head">
+        <h3><%=current_user.proposal_setting.tier3_name%></h3>
+          
+        <h4><%=number_to_currency(@proposal.fee_tier3)%>
+        <span>
+        Per Month </span>
+        </h4>
+      </div>
+ 
+      <%= render 'proposal_t1_detail', :p => @proposal.proposal_details.where('tier3_applicable = 1') %>
+    </div>
+  </div>  
+
+ 
+  
+ 
+</div>
+
+  
+
+ 
+
