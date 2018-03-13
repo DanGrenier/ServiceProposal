@@ -47,6 +47,7 @@ gem 'devise', '3.5.6'
 
 gem 'gon'
 
+gem 'figaro'
 
 # Use will paginate to paginate long results
 gem 'will_paginate', '~> 3.1.0'

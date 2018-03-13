@@ -33,7 +33,14 @@
             </td>
                     
             <td class="text-nowrap" style="text-align:center">
-              <%= p.status_desc%>
+              <%case p.proposal_status%>
+              <%when 0%>
+                <i class="fa fa-hourglass-2 fa-2x icon-hourglass"  aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Make this proposal pending" data-placement="right" data-container="body"></i>
+              <%when 1%>          
+                <i class="fa fa-thumbs-o-up fa-2x icon-approved" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Accepted! (<%=number_to_currency(p.actual_fee, precision: 2)%>)" data-placement="right" data-container="body"></i>
+              <%when 2%>          
+                <i class="fa fa-thumbs-o-down fa-2x icon-declined" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Declined!" data-placement="right" data-container="body"></i>
+              <%end%>  
             </td>
           
         </tr>

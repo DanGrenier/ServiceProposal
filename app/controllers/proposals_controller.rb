@@ -5,11 +5,7 @@ class ProposalsController < ApplicationController
   before_action :only_current_user, only:[:edit,:update,:destroy, :show]
 
   def index
-    logger.debug "Sort Column: #{sort_column}"
-    logger.debug "Sort Direction: #{sort_direction}"
     sorting = sort_column + " " + sort_direction
-    logger.debug "Sort: #{sorting}"
-    logger.debug "Search #{params[:search]}"
   	@proposals = Proposal.search(params[:search],current_user.id).order(sorting)
   end
 
@@ -81,6 +77,15 @@ class ProposalsController < ApplicationController
       end
     end
   end  
+
+  def send_proposal_email
+    Rails.logger.debug "BEFORE CALLING THE MAIL FUNCTION"
+    @proposal = Proposal.find(params[:id])
+    ProposalMailer.email_proposal_to_prospect(@proposal,current_user).deliver_now
+    flash[:success] = "Proposal Sent to #{@proposal.contact_email}"
+    redirect_to proposals_path
+
+  end
 
   private
 

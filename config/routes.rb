@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :proposals
   post '/proposal/render' => 'proposals#report'
   get '/proposal/render' => redirect('/proposals')
+  get 'proposal/email' => 'proposals#send_proposal_email'
   get '/pick_template' => 'pick_proposal_templates#index'
   
 end
