@@ -17,7 +17,7 @@ class ProposalTemplatesController < ApplicationController
     @template = ProposalTemplate.new(template_params)
 
     if @template.save
-      flash[:success] = "Template created successfully"
+      flash[:success] = "Template Created Successfully"
       redirect_to proposal_templates_path
     else
       render :new
@@ -25,14 +25,12 @@ class ProposalTemplatesController < ApplicationController
 
   end
 
-
   def edit
-
   end
 
   def update
     if @template.update_attributes(template_params)
-      flash[:success] = "Template modified successfully"
+      flash[:success] = "Template Modified Successfully"
       redirect_to proposal_templates_path
     else
       render :edit
@@ -41,16 +39,15 @@ class ProposalTemplatesController < ApplicationController
 
   def destroy
     if @template.destroy
-      flash[:success] = "Template deleted successfully"
+      flash[:success] = "Template Deleted Successfully"
       redirect_to proposal_templates_path
     else
-      flash[:danger] = "Template could not be deleted"
+      flash[:danger] = "Template Could Not be Deleted"
       redirect_to proposal_templates_path
     end
   end
 
   private
-
     def template_params
       params.require(:proposal_template).permit(:user_id, :service_type, :template_description, proposal_template_details_attributes:[:id, :service_id, :tier1_applicable, :tier2_applicable, :tier3_applicable ])
     end
@@ -62,6 +59,5 @@ class ProposalTemplatesController < ApplicationController
     def only_current_user
       redirect_to(root_url) unless @template.user_id == current_user.id
     end
-
 
 end

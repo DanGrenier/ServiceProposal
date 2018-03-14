@@ -1,7 +1,6 @@
 class PickProposalTemplatesController < ApplicationController
 before_action :authenticate_user!
 
-
 def index
 	@templates = ProposalTemplate.where('user_id = ?',current_user.id)
 end

@@ -1,9 +1,8 @@
 <%=form_for @proposal,:html => { :multipart => true, :class =>'form-horizontal'} do |f| %>
-
 <div class = "well">
   <div class = "row">
     <%=f.hidden_field :user_id, :value => f.object.user_id%>
-    
+    <!-- Proposal Type -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :service_type, "Proposal Type", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
@@ -12,27 +11,28 @@
           </div>
       </div>
     </div>  
-
+    <!-- Contact First Name -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :contact_first, "Contact First Name", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
           <div class = "col-sm-8 col-md-8 col-lg-8">
-            <%= f.text_field :contact_first,class:"form-control text-left input-sm", :tabindex => 8 %>
+            <%= f.text_field :contact_first,class:"form-control text-left input-sm",  required: true,  :tabindex => 8 %>
           </div>
       </div>
     </div>  
   </div>
   
   <div class = "row">
+    <!-- Business Name -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :business_name, "Business Name", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
           <div class = "col-sm-8 col-md-8 col-lg-8">
-            <%= f.text_field :business_name,class:"form-control text-left input-sm", :tabindex => 2 %>
+            <%= f.text_field :business_name,class:"form-control text-left input-sm", required: true ,  :tabindex => 2 %>
           </div>
       </div>
     </div>  
-
+   <!-- Proposal Type -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :contact_last, "Contact Last Name", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
@@ -44,15 +44,16 @@
   </div>
 
   <div class = "row">
+    <!-- Address -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :address, "Address", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
           <div class = "col-sm-8 col-md-8 col-lg-8">
-            <%= f.text_field :address,class:"form-control text-left input-sm", :tabindex => 3 %>
+            <%= f.text_field :address,class:"form-control text-left input-sm",  required: true,  :tabindex => 3 %>
           </div>
       </div>
     </div>  
-
+    <!-- Contact Email -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :contact_email, "Contact email", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
@@ -64,6 +65,7 @@
   </div>
 
   <div class = "row">
+    <!-- Address2 -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :address2, "", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
@@ -72,27 +74,28 @@
           </div>
       </div>
     </div>  
-
+    <!-- Business Type -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :business_type, "Business Type", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
           <div class = "col-sm-7 col-md-7 col-lg-7">
-            <%= f.collection_select :business_type, BusinessType.order("industry_code ASC"), :id, :description, {:prompt => "Select an Industry"}, {:class => 'form-control input-sm', :tabindex => 11}%>
+            <%= f.collection_select :business_type, BusinessType.order("industry_code ASC"), :id, :description, {:prompt => "Select an Industry"}, {:class => 'form-control input-sm', :tabindex => 11,  required: true}%>
           </div>
       </div>
     </div>  
   </div>
 
   <div class = "row">
+    <!-- City -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :city, "City", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
           <div class = "col-sm-8 col-md-8 col-lg-8">
-            <%= f.text_field :city,class:"form-control text-left input-sm", :tabindex => 5 %>
+            <%= f.text_field :city,class:"form-control text-left input-sm", :tabindex => 5, required: true %>
           </div>
       </div>
     </div> 
-
+    <!-- Proposal Status -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :proposal_status, "Proposal Status", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
@@ -106,15 +109,16 @@
   </div>
 
   <div class = "row">
+    <!-- State -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :state, "State", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
           <div class = "col-sm-5 col-md-5 col-lg-3">
-            <%= f.text_field :state,class:"form-control text-left input-sm", :tabindex => 6 %>
+            <%= f.text_field :state,class:"form-control text-left input-sm", :tabindex => 6 , required: true%>
           </div>
       </div>
     </div>  
-    
+    <!-- ACtual Fee Charged -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :actual_fee, "Accepted Fee", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
@@ -128,6 +132,7 @@
 
 
   <div class = "row">
+    <!-- Zip Code -->      
     <div class = "col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <%=f.label :zip, "Zip", class: 'col-md-4 col-sm-4 col-lg-4 control-label'%>
@@ -140,7 +145,7 @@
     
   </div>  
 </div>  
-
+<!-- Proposal Text for the Client -->      
 <h3 align = "left">Proposal Text</h3>
   <div class = "well">
     <div class = "row"> 
@@ -149,52 +154,44 @@
       </div>
     </div>
   </div>  
+<!-- Proposal Detail with Checkboxes -->        
 <h3 align = "left">Proposal Detail</h3>
 <div class = "well">
 <div class = "row">
   <div class = "col-md-5 col-sm-5 col-lg-5">
-  </div>  
+  </div>
+  <!-- Tier 1 -->        
   <div class = "col-md-2 col-sm-2 col-lg-2">
     <span style = "display:inline-block;width:90%">
-      
       <div class = "input-group">
-              <span class="input-group-addon">$</span>
-      
-       <%=f.number_field :fee_tier1,  :step => 'any',:tabindex => 12, class: 'form-control text-center pricing' , :value => (number_with_precision(f.object.fee_tier1, :precision => 2) || 0) %>
-       </div>
-      
+        <span class="input-group-addon">$</span>
+        <%=f.number_field :fee_tier1,  :step => 'any',:tabindex => 12, class: 'form-control text-center pricing' , :value => (number_with_precision(f.object.fee_tier1, :precision => 2) || 0) %>
+      </div>
     </span>
   </div>
-  
+  <!-- Tier 2 -->        
   <div class = "col-md-2 col-sm-2 col-lg-2"> 
     <span style = "display:inline-block;width:90%">
-      
       <div class = "input-group">
-              <span class="input-group-addon">$</span>
-        
+        <span class="input-group-addon">$</span>
         <%=f.number_field :fee_tier2,  :step => 'any',:tabindex => 13, class: 'form-control text-center pricing' , :value => (number_with_precision(f.object.fee_tier2, :precision => 2) || 0) %>
-        </div>
-      
+      </div>
     </span>
   </div>
+  <!-- Tier 3 -->        
   <div class = "col-md-2 col-sm-2 col-lg-2"> 
-    
-      <span style = "display:inline-block;width:90%">
-     
-        <div class = "input-group">
-              <span class="input-group-addon">$</span>
+    <span style = "display:inline-block;width:90%">
+      <div class = "input-group">
+        <span class="input-group-addon">$</span>
         <%=f.number_field :fee_tier3,  :step => 'any',:tabindex => 14, class: 'form-control text-center pricing' , :value => (number_with_precision(f.object.fee_tier3, :precision => 2) || 0) %>
-        </div>
-      
-      </span>
-    
+      </div>
+    </span>
   </div>
 </div>
 
 <div class = "row">
   <div class = "col-md-5 col-sm-5 col-lg-5">
     <h4><span class = "label label-primary pull-left" style="text-align:left;display:inline-block;width:90%">SERVICES</span></h4>
-    
   </div>
 
   <div class = "col-md-2 col-sm-2 col-lg-2">
@@ -209,12 +206,9 @@
     <h4><span class = "label label-primary" style="display:inline-block;width:90%"><%=current_user.proposal_setting.tier3_name%></span></h4>
   </div>
 </div>
-  <%=f.fields_for :proposal_details, f.object.proposal_details.sort_by(&:service_id) do |builder| %>
-    <%= render 'proposal_detail_fields', :f => builder %>
-  <%end%>
-  
-
-
+<%=f.fields_for :proposal_details, f.object.proposal_details.sort_by(&:service_id) do |builder| %>
+  <%= render 'proposal_detail_fields', :f => builder %>
+<%end%>
  
 <br>
 <div class = "row">
@@ -229,8 +223,4 @@
     </div>
   </div>
 </div>
-  
-
- 
-
 <%end%>

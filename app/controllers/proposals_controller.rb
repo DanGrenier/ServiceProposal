@@ -1,8 +1,8 @@
 class ProposalsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :authenticate_user!
-  before_action :set_proposal, only:[:edit, :update, :destroy, :show]
-  before_action :only_current_user, only:[:edit,:update,:destroy, :show]
+  before_action :set_proposal, only:[:edit, :update, :destroy, :show, :report, :send_proposal_email]
+  before_action :only_current_user, only:[:edit,:update,:destroy, :show, :report, :send_proposal_email]
 
   def index
     sorting = sort_column + " " + sort_direction
@@ -16,10 +16,11 @@ class ProposalsController < ApplicationController
     if(params[:template_id])
       @template_id = params[:template_id].to_i
     end
-
+    #Create new proposal
     @proposal = Proposal.new
     @proposal.user_id = current_user.id 
     @proposal.proposal_text = current_user.proposal_setting.proposal_default_text
+    #call the building method accordingly if a proposal was created from a template
     if (@template_id)
       @proposal.build_from_template(@template_id)
     else
@@ -29,7 +30,6 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(proposal_params)
-
     if @proposal.save
       if submit_req == "Save and Preview" 
         redirect_to proposal_path(id: @proposal.id)
@@ -69,21 +69,25 @@ class ProposalsController < ApplicationController
     end
   end
 
+  #Method to generate the proposal as a pdf document (that can then be printed or saved)
   def report
-    @proposal = Proposal.find(params[:id])
     respond_to do |format|
       format.pdf do
+        #Call the Proposal Drawer to generate the proposal PDF and assign it a filename
         send_data ProposalDrawer.draw(@proposal, current_user), :filename => '@proposal#{@proposal.id}.pdf', :type => "application/pdf", :disposition => "inline"
       end
     end
   end  
-
+  #Method to generate the proposal as a pdf and email it to the client (provided there is an email address)
   def send_proposal_email
-    Rails.logger.debug "BEFORE CALLING THE MAIL FUNCTION"
-    @proposal = Proposal.find(params[:id])
-    ProposalMailer.email_proposal_to_prospect(@proposal,current_user).deliver_now
-    flash[:success] = "Proposal Sent to #{@proposal.contact_email}"
-    redirect_to proposals_path
+    if @proposal.contact_email.blank?
+      flash[:danger] = "This Proposal does not contain a valid email address for the client. Edit the proposal to add an email address"
+      redirect_to proposals_path
+    else
+      ProposalMailer.email_proposal_to_prospect(@proposal,current_user).deliver_now
+      flash[:success] = "Proposal Sent to #{@proposal.contact_email}"
+      redirect_to proposals_path
+    end
 
   end
 

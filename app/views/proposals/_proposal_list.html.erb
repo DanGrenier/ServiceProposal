@@ -12,32 +12,31 @@
         <th style = "text-align:center">Quotes</th>
         <th style = "text-align:center">Status</th>
         <th style="text-align:center">Actions</th>
-        
       </tr>
     </thead>
     <% @proposals.each do |proposal| %>
       <tr>
-        
+        <!-- Created At -->        
         <td align="left" class = "text-nowrap">
           <h5><%=(l proposal.created_at, format: :notime)%></h5> 
         </td>
-        
+        <!-- Proposal Type -->        
         <td align="left" class = "text-nowrap">
           <h5><%=proposal.service_type_desc%></h5> 
         </td>
-
+        <!-- Business Name -->        
         <td align="left" class = "text-nowrap">
           <h5><%=proposal.business_name%></h5> 
         </td>
-
+        <!-- Business Type Description -->        
         <td align="left" class = "text-nonwrap">
           <h5><%=BusinessType.get_desc_from_id(proposal.business_type)%></h5>
         </td>
-
+        <!-- Show Quotes -->        
         <td align="center" class = "text-nonwrap">
           <h5><%=number_with_precision(proposal.fee_tier1, precision: 2)%> / <%=number_with_precision(proposal.fee_tier2, precision: 2)%> / <%=number_with_precision(proposal.fee_tier3, precision: 2)%> </h5>
         </td>
-
+        <!-- Show Proper Icon Based On Proposal Status  -->        
         <td align = "center" class = "text-nonwrap">
           <%case proposal.proposal_status%>
           <%when 0%>
@@ -47,7 +46,6 @@
           <%when 2%>          
             <i class="fa fa-thumbs-o-down fa-2x icon-declined" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Declined!" data-placement="right" data-container="body"></i>
           <%end%>  
-
         </td>
      
         <td class = "text-nowrap" align="center">
@@ -65,13 +63,9 @@
             <i class="fa fa-trash fa-2x" aria-hidden="true"  data-html = "true" data-toggle="tooltip" title="Delete this proposal" data-placement ="right" data-container="body"></i>
           <%end%>
         </td>
-    
       </tr>
-     
     <% end %>
-    
   </table>
-
 </div>      
 
 

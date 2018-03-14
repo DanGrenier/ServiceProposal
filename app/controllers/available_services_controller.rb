@@ -18,7 +18,7 @@ end
 def create
   @service = AvailableService.new(service_params)
 	if @service.save
-    flash[:success] = "Proposal service created successfully!"
+    flash[:success] = "Service Item Created Successfully."
 		redirect_to available_services_path
 	else
 		render :new
@@ -30,7 +30,7 @@ end
 
 def update
 	if @service.update_attributes(service_params)
-		flash[:success] = "Proposal service updated successfully!"
+		flash[:success] = "Service Item Updated Successfully."
     redirect_to available_services_path
 	else
 		render :edit
@@ -40,27 +40,27 @@ end
 
 def destroy
   if @service.destroy
-    flash[:success] = "Service deleted successfully!"
+    flash[:success] = "Service Item Deleted Successfully."
     redirect_to available_services_path
   else
-    flash[:danger] = "Could not delete service!"
+    flash[:danger] = "Service Item Could Not be Deleted!"
     redirect_to available_services_path
   end
 end
 
 
 private
-  #method that gathers the params from the form 
+  #method that gathers and whitelists the params from the form 
   def service_params
     params.require(:available_service).permit(:user_id, :service_description, :service_type, :custom_service)
   end
 
-  #method that verifies that the current logged in franchise can edit only their remittances
+  #method that verifies that the current logged in franchise can only edit ,  update and delete their own items
   def only_current_user
     redirect_to(root_url) unless @service.user_id == current_user.id
   end
 
-  #method that finds and sets the invoice object needed for some actions
+  #method that finds and sets the service item object needed for some actions
   def set_service
     @service = AvailableService.find(params[:id])
   end

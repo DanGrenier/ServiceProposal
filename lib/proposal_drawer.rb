@@ -15,7 +15,6 @@ def self.draw(proposal, current_user)
       page.item(:city_state_zip).value(proposal.city + ","+proposal.state+", "+proposal.zip)
     end
     page.item(:proposal_text).value(proposal.proposal_text)
-
     page.item(:office_owner).value(current_user.owner_first + " "+current_user.owner_last)
     page.item(:office_address).value(current_user.address)
     if !current_user.address2.blank?
@@ -34,6 +33,7 @@ def self.draw(proposal, current_user)
     page.item(:fee_tier1).value(ActiveSupport::NumberHelper.number_to_currency(proposal.fee_tier1, precision: 2))
     page.item(:fee_tier2).value(ActiveSupport::NumberHelper.number_to_currency(proposal.fee_tier2, precision: 2))
     page.item(:fee_tier3).value(ActiveSupport::NumberHelper.number_to_currency(proposal.fee_tier3, precision: 2))
+    
     proposal.proposal_details.where('tier1_applicable = 1').each do |t1|
       report.page.list(:tier1_list).add_row do |row|
         row.values tier1_service: AvailableService.get_desc_from_id(t1.service_id)
@@ -52,8 +52,6 @@ def self.draw(proposal, current_user)
       end
     end
   end
-  
-
   
   report.generate
 

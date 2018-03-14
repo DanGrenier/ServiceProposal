@@ -1,8 +1,9 @@
-<div class = "row">
+
   <div class="sectiontitle" style="text-align:left">
-  <h2>Proposal History</h2>
-  <span class="headerLine"></span>
-</div>
+    <h2>Proposal History</h2>
+    <span class="headerLine"></span>
+  </div>
+
 <br>
 <div class = "row">
   <%= form_tag proposals_path, :method => 'get', :id => "proposals_search", :class =>"form-horizontal"  do %>
@@ -14,12 +15,12 @@
       <%= submit_tag "Search", :business_name => nil,  class:'btn btn-primary'%>
     </div>
   <% end %>
-</div>    
+</div>  
 <br>
 
-  <div id="proposal">
-    <%=render partial: 'proposal_list'%>
-  </div>
+<div id="proposal">
+  <%=render partial: 'proposal_list'%>
+</div>
    
 
 
