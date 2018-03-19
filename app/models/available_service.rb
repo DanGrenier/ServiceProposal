@@ -5,7 +5,6 @@ class AvailableService < ActiveRecord::Base
   #t.string  "service_type"
   #t.string  "custom_service"
   
-
   belongs_to :user
 
   validates_presence_of :user_id
