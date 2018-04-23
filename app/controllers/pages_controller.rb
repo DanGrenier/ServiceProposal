@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  decorates_assigned :proposals
   include StatsHelper  
   def home
     #If a user is signed in?
@@ -12,7 +13,7 @@ class PagesController < ApplicationController
       @declined_proposals = get_proposal_with_status(current_user.id, 2)
       @average_fee = get_proposal_avg_fee(current_user.id)
       #Show a list of the last few proposals for quick reference
-      @recent = Proposal.get_recent_proposals(current_user.id)
+      @proposals = Proposal.get_recent_proposals(current_user.id)
     end
   end
 end

@@ -13,8 +13,8 @@
         <th style="text-align:center">Status</th>
       </tr>
     </thead>
-    <%if @recent.length > 0 %>
-      <% @recent.each do |p|%>
+    <%if @proposals.length > 0 %>
+      <% proposals.each do |p|%>
         <tr>
           <!-- Created Date -->
           <td class="text-nowrap">
@@ -30,18 +30,12 @@
           </td>
           <!-- Listing the 3 Different Quotes -->      
           <td class="text-nowrap" style="text-align:center">
-            <%= number_to_currency(p.fee_tier1) + " / "+ number_to_currency(p.fee_tier2) + " / " + number_to_currency(p.fee_tier3)%>
+            <%= p.quote_list%>
+            
           </td>
           <!-- Show Icon Depending on Proposal Status -->          
           <td class="text-nowrap" style="text-align:center">
-            <%case p.proposal_status%>
-            <%when 0%>
-              <i class="fa fa-hourglass-2 fa-2x icon-hourglass"  aria-hidden="true" data-html = "true" data-toggle="tooltip" title="This Proposal is Pending" data-placement="right" data-container="body"></i>
-            <%when 1%>          
-              <i class="fa fa-thumbs-o-up fa-2x icon-approved" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Accepted! (<%=number_to_currency(p.actual_fee, precision: 2)%>)" data-placement="right" data-container="body"></i>
-            <%when 2%>          
-              <i class="fa fa-thumbs-o-down fa-2x icon-declined" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Declined!" data-placement="right" data-container="body"></i>
-            <%end%>  
+            <%= p.proposal_status_icon %>
           </td>
         </tr>
       <%end%>

@@ -52,6 +52,8 @@ gem 'figaro'
 # Use will paginate to paginate long results
 gem 'will_paginate', '~> 3.1.0'
 
+# Draper is used to create decorators for views
+gem 'draper'
 
 group :development, :test do
   gem 'bullet'

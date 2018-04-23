@@ -1,10 +1,12 @@
 class AvailableServicesController < ApplicationController
+decorates_assigned :services
 before_action :authenticate_user!
 before_action :set_service , only:[:edit, :update, :destroy, :show]
 before_action :only_current_user,  only:[:edit, :update, :destroy]
 
 def index
 	@services = AvailableService.get_proposal_services(current_user.id)
+ 
 end
 
 def show
@@ -43,7 +45,9 @@ def destroy
     flash[:success] = "Service Item Deleted Successfully."
     redirect_to available_services_path
   else
-    flash[:danger] = "Service Item Could Not be Deleted!"
+    flash[:error] = @service.errors.full_messages.to_sentence
+   
+
     redirect_to available_services_path
   end
 end
@@ -66,3 +70,5 @@ private
   end
 
 end
+
+

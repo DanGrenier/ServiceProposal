@@ -1,11 +1,14 @@
 class AvailableService < ActiveRecord::Base
-
+  
   #t.integer "user_id"
   #t.string  "service_description"
   #t.string  "service_type"
   #t.string  "custom_service"
   
   belongs_to :user
+  
+
+  before_destroy :check_for_proposals
 
   validates_presence_of :user_id
   validates_presence_of :service_description, :message => "Please Enter a Service Description"
@@ -23,7 +26,8 @@ class AvailableService < ActiveRecord::Base
     @services_by_id ||= AvailableService.select(:id,:service_description).map {|e| e.attributes.values}.inject({}) {|memo, misc| memo[misc[0]] = misc[1]; memo}
     return @services_by_id[r_id] if @services_by_id[r_id]
     result = AvailableService.select("service_description").where("id = ?", r_id)
-    return @services_by_id[r_id] = result[0].service_description
+    Rails.logger.debug "RESULT: #{result}"
+    return @services_by_id[r_id] = (result[0].service_description if result.length > 0) || "Undefined Service" 
   end
   
   #Build a default proposal service for a user
@@ -44,6 +48,15 @@ class AvailableService < ActiveRecord::Base
         'Tax'
     end
   end
+
+  private 
+    def check_for_proposals
+      if ProposalDetail.where("service_id = ?", self.id).length > 0
+        errors.add(:base,"You can't delete a service once it's been used in a proposal")
+        return false
+      end
+    end
+
 
 
 end

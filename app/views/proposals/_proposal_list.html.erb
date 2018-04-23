@@ -14,7 +14,7 @@
         <th style="text-align:center">Actions</th>
       </tr>
     </thead>
-    <% @proposals.each do |proposal| %>
+    <% proposals.each do |proposal| %>
       <tr>
         <!-- Created At -->        
         <td align="left" class = "text-nowrap">
@@ -38,14 +38,8 @@
         </td>
         <!-- Show Proper Icon Based On Proposal Status  -->        
         <td align = "center" class = "text-nonwrap">
-          <%case proposal.proposal_status%>
-          <%when 0%>
-            <i class="fa fa-hourglass-2 fa-2x icon-hourglass"  aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Make this proposal pending" data-placement="right" data-container="body"></i>
-          <%when 1%>          
-            <i class="fa fa-thumbs-o-up fa-2x icon-approved" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Accepted! (<%=number_to_currency(proposal.actual_fee, precision: 2)%>)" data-placement="right" data-container="body"></i>
-          <%when 2%>          
-            <i class="fa fa-thumbs-o-down fa-2x icon-declined" aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Declined!" data-placement="right" data-container="body"></i>
-          <%end%>  
+          <%= proposal.proposal_status_icon%>
+          
         </td>
      
         <td class = "text-nowrap" align="center">

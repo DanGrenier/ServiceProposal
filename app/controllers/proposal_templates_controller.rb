@@ -4,6 +4,7 @@ class ProposalTemplatesController < ApplicationController
   before_action :only_current_user, only:[:edit,:update,:destroy]
 
   def index
+    #Show proposals for current user only
   	@templates = ProposalTemplate.where("user_id = ?", current_user.id)
   end
 
@@ -15,7 +16,6 @@ class ProposalTemplatesController < ApplicationController
 
   def create
     @template = ProposalTemplate.new(template_params)
-
     if @template.save
       flash[:success] = "Template Created Successfully"
       redirect_to proposal_templates_path

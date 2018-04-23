@@ -1,4 +1,5 @@
 class ProposalsController < ApplicationController
+  decorates_assigned :proposals
   helper_method :sort_column, :sort_direction
   before_action :authenticate_user!
   before_action :set_proposal, only:[:edit, :update, :destroy, :show, :report, :send_proposal_email]
