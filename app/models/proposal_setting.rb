@@ -20,6 +20,5 @@ class ProposalSetting < ActiveRecord::Base
   def self.get_proposal_settings(user_id)
     self.find_by(user_id: user_id)
   end
-
  
 end
