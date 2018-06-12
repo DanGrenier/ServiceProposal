@@ -12,7 +12,7 @@ gem 'pg_search'
 gem 'bootstrap-sass', '3.3.6'
 
 # Font Awesome for icons
-gem 'font-awesome-sass', '4.7.0'
+gem 'font-awesome-sass', '4.6.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
