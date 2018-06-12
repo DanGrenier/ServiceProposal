@@ -1,0 +1,66 @@
+require 'faker'
+
+
+FactoryGirl.define do
+
+sequence :fran_id 
+ 
+
+
+  factory :franchise do |r|
+  r.area "1"
+  r.mast "0"
+  r.region "1"
+  r.franchise {generate :fran_id}
+  r.office "1" 
+  r.firm_id "123456"
+  r.lastname "Last"
+  r.firstname "First"
+  r.city "Athens"
+  r.state "GA"
+  r.created_at DateTime.now
+  r.updated_at DateTime.now
+  r.email "firstlast@smallbizpros.com"
+  r.prior_year_rebate 1000
+  r.advanced_rebate 5
+  r.show_exempt_collect 1
+  r.initial "S"
+  r.salutation "Mr."
+  r.address "100 some street"
+  r.address2 ""
+  r.zip_code "30606"
+  r.ship_address "100 some street"
+  r.ship_address2 ""
+  r.ship_city "Athens"
+  r.ship_state "GA"
+  r.ship_zip_code "30606"
+  r.home_address "100 some other street"
+  r.home_address2 ""
+  r.home_city "Bogart"
+  r.home_state "GA"
+  r.home_zip_code "30622"
+  r.phone "706-555-5555"
+  r.phone2 "706-555-5556"
+  r.fax "1-800-555-5557"
+  r.mobile "678 555-5555"
+  r.start_date Date.today-1.year
+  r.renew_date Date.today+5.year
+  r.term_date nil
+  r.term_reason ""
+  r.salesman "Some Salesperson"
+  r.territory "Athens Greater Area"
+  r.start_zip "30606"
+  r.stop_zip "30622"
+  r.alt_email "partner@smallbizpros.com"
+  r.non_compliant 0
+  r.non_compliant_reason
+  r.inactive 0
+    
+  end
+
+
+
+
+
+end
+

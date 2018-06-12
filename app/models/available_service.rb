@@ -13,6 +13,7 @@ class AvailableService < ActiveRecord::Base
   validates_presence_of :user_id
   validates_presence_of :service_description, :message => "Please Enter a Service Description"
   validates_presence_of :service_type, :message => "Please Select a Service Category"
+  validates_presence_of :custom_service
   
   #Method that returns all proposal services (standard ones and custom ones for current user)  
   def self.get_proposal_services(user_id)

@@ -16,6 +16,9 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+$('[data-toggle="tooltip"]').tooltip();
+
   $("#proposals_search input").keyup(function() 
   {
   	

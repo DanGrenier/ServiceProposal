@@ -58,9 +58,8 @@ gem 'draper'
 group :development, :test do
   gem 'bullet'
   gem 'byebug'
-  gem 'factory_girl_rails'
-  gem 'guard-rspec', require: false
-  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '3.4'
   gem 'spring-commands-rspec'
 
 end
