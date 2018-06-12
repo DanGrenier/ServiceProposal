@@ -297,7 +297,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   figaro
-  font-awesome-sass (~> 4.7.0)
+  font-awesome-sass (= 4.7.0)
   gon
   jbuilder (~> 2.0)
   jquery-rails
