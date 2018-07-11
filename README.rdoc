@@ -36,20 +36,4 @@ More technical details:
 
 * Uses Bootstrap, FontAwesome, Thinreports, Devise, Draper,  Figaro and Will_Paginate
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* To run tests: rspec 
-
-
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
