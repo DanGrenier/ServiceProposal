@@ -3,7 +3,7 @@ require 'faker'
 
 FactoryBot.define do
 	factory :proposal_setting do |r|
-    r.user_id "1"
+    r.user_id 1
     r.return_email "dgrenier@smallbizpros.com"
     r.tier1_name "SILVER"
     r.tier2_name "GOLD"
@@ -14,7 +14,9 @@ FactoryBot.define do
 
 
    factory :invalid_setting_tier1_name, parent: :proposal_setting do |f|
-    f.tier1_name nil
+    f.tier1_name "DIAMOND"
+    f.tier2_name nil
+    f.tier3_name nil
    end
 
    factory :invalid_setting_tier2_name, parent: :proposal_setting do |f|

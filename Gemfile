@@ -79,7 +79,7 @@ end
 group :test do 
   gem 'capybara', '2.9.2'
   gem 'capybara-webkit'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '1.5.3'
   gem 'faker'	
   gem 'launchy'
 end

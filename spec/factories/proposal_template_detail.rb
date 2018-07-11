@@ -2,7 +2,7 @@ require 'faker'
 
 FactoryBot.define do
   factory :proposal_template_detail do |r|
-    r.proposal_template_id 1
+    
     r.service_id 1
     r.tier1_applicable 1
     r.tier2_applicable 1

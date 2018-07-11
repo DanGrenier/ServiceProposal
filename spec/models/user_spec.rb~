@@ -14,8 +14,8 @@ describe User  do
   end
   
   it "does not allow a duplicate email" do 
-    FactoryBot.create(:user, email: "brigitte@sbp.com" , password: "patate")
-    expect(FactoryBot.build(:user, email: "brigitte@sbp.com", password: "patate")).not_to be_valid
+    FactoryGirl.create(:user, email: "brigitte@sbp.com" , password: "patate")
+    expect(FactoryGirl.build(:user, email: "brigitte@sbp.com", password: "patate")).not_to be_valid
   end
 
 	

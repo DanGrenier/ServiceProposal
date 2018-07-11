@@ -2,32 +2,21 @@ require 'spec_helper'
 require 'pp'
 RSpec.feature "User Logs In", :js=> true do 
   before do 
-  	@franchise = FactoryGirl.create(:franchise)
-  	@franchise3 = FactoryGirl.create(:franchise, id:3 )
-  	@admin = FactoryGirl.create(:adminuser)
-  	@user = FactoryGirl.create(:user)
-  end	
-
-  scenario "Franchise User with valid credentials"	do 
-  	visit '/'
-  	first(:link, "Log In").click
-	fill_in "user_email", :with => @user.email
-	fill_in "user_password", :with => @user.password
-	click_button "Log in"
-	expect(page).to have_content "Royalty Activity" 
-  end
-
-  scenario "Admin User with valid credentials" do 
-    visit '/'
+    @user = FactoryBot.create(:user)
+  end 
+  
+  scenario "User with valid credentials"	do 
+    visit root_path
     first(:link, "Log In").click
-    fill_in "user_email", :with => @admin.email
-	fill_in "user_password", :with => @admin.password
-	click_button "Log in"
-	expect(page).to have_content "Franchise Activity"
+	  fill_in "user_email", :with => @user.email
+	  fill_in "user_password", :with => @user.password
+    click_button "Log in"
+    expect(page).to have_content "Proposal Statistics" 
   end
 
-  scenario "Franchise user with bad credentials" do
-    visit '/'
+  
+  scenario "User with bad credentials" do
+    visit root_path
     first(:link, "Log In").click
     fill_in "user_email", :with => "test@test.com"
 	fill_in "user_password", :with => "potato"

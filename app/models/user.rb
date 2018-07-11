@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_one :proposal_setting
   after_create :create_proposal_setting
 
+  validates :email, presence: true
+  validates_uniqueness_of :email
   #Check if the Profile is complete
   def profile_incomplete?
   	business_name.blank? || owner_first.blank? || owner_last.blank? || address.blank? || city.blank? || state.blank? || phone.blank?

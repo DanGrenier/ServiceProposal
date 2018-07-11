@@ -3,9 +3,8 @@ require 'faker'
 
 FactoryBot.define do
 
-
-
   factory :proposal do |r|
+  r.id 1
   r.user_id 1
   r.service_type 1
   r.business_name "John Audio"
@@ -25,11 +24,14 @@ FactoryBot.define do
   r.actual_fee 0.00
   r.proposal_text "Thank you for meeting with me. Here is your proposal"
   r.proposal_status 0
+
+  factory :proposal_with_detail do 
+    after(:create) do |proposal| 
+      create_list(:proposal_detail, 3 , proposal: proposal)
+    end
     
   end
-
-
-
+end
 
 
 end

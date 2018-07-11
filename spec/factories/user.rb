@@ -2,8 +2,9 @@ require 'faker'
 
 FactoryBot.define do
   factory :user do |f|
-   f.email  {Faker::Internet.safe_email}
-	 f.encrypted_password  {Faker::Internet.password}
+   f.id 1
+   f.email  "user@domain.com"
+	 f.password  "mypassword"
 	 f.business_name "My Accounting Firm"
    f.owner_first "Daniel"
    f.owner_last "Grenier"

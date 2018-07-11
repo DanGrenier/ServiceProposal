@@ -24,8 +24,8 @@ describe ProposalTemplate do
   describe "test model methods" do 
     before :each do
       @template1 = FactoryBot.create(:proposal_template)
-      @template2 = FactoryBot.create(:proposal_template, service_type: 2)
-      @template3 = FactoryBot.create(:proposal_template, service_type: 3)
+      @template2 = FactoryBot.create(:proposal_template, service_type: 2, id: 2)
+      @template3 = FactoryBot.create(:proposal_template, service_type: 3, id: 3)
     end
 
     context "service_type_desc" do
