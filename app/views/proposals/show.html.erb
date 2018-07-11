@@ -1,24 +1,24 @@
 <div class = "row">
   <div class = "col-sm-4 col-md-4 col-lg-4">
-    <%=image_tag("Padgett_CC_S.png") %>
+    <%=image_tag("YourLogo.png") %>
   </div>
   <div class="col-sm-5 col-md-5 col-lg-5"></div>
-
+  <!-- Show PDF Button -->
   <div class = "col-sm-1 col-md-1 col-lg-1">    
     <%= link_to proposal_render_path(params.merge(format: 'pdf')), :method => :post do %>
       <i style = "color:red" class = 'fa fa-3x fa-file-pdf-o' aria-hidden="true" data-html = "true" data-toggle="tooltip" title="View as PDF" data-placement="right" data-container="body"></i>
     <%end%>
   </div>  
-  
+  <!-- Show Email Button -->
   <div class = "col-sm-1 col-md-1 col-lg-1">
     <%= link_to proposal_email_path(params) do %>
       <i style = "color:black" class = 'fa fa-3x fa-envelope-o' aria-hidden="true" data-html = "true" data-toggle="tooltip" title="E-Mail this Proposal" data-placement="right" data-container="body"></i>
     <%end%>
   </div>
-
+  <!-- Show Close Button -->
   <div class = "col-sm-1 col-md-1 col-lg-1">
     <%=link_to proposals_path do%>
-      <i class = 'fa fa-3x fa-window-close-o' aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Back to Proposal List" data-placement="right" data-container="body"></i>
+      <i class = 'fa fa-3x fa-close' aria-hidden="true" data-html = "true" data-toggle="tooltip" title="Back to Proposal List" data-placement="right" data-container="body"></i>
     <%end%>
   </div>  
 </div>

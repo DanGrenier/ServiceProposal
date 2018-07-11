@@ -1,4 +1,6 @@
 module StatsHelper
+  #Module that exports methods to get proposal stats for the current user
+  #This is used on the main screen	
   def get_proposals(user_id)
     Proposal.where('user_id = ?', user_id).count
   end

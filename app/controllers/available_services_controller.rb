@@ -5,15 +5,17 @@ before_action :set_service , only:[:edit, :update, :destroy, :show]
 before_action :only_current_user,  only:[:edit, :update, :destroy]
 
 def index
-	@services = AvailableService.get_proposal_services(current_user.id)
- 
+  #List services for the current logged in user only
+  @services = AvailableService.get_proposal_services(current_user.id)
 end
 
 def show
 end
 
 def new
+  #Create the new service code
 	@service = AvailableService.new
+  #pre-populate values for this particular user
   @service.build_for_user(current_user.id)
 end
 
@@ -46,12 +48,9 @@ def destroy
     redirect_to available_services_path
   else
     flash[:error] = @service.errors.full_messages.to_sentence
-   
-
     redirect_to available_services_path
   end
 end
-
 
 private
   #method that gathers and whitelists the params from the form 
@@ -59,12 +58,12 @@ private
     params.require(:available_service).permit(:user_id, :service_description, :service_type, :custom_service)
   end
 
-  #method that verifies that the current logged in franchise can only edit ,  update and delete their own items
+  #Method that verifies that a user can only edit,update and destroy their own added codes
   def only_current_user
     redirect_to(root_url) unless @service.user_id == current_user.id
   end
 
-  #method that finds and sets the service item object needed for some actions
+  #Method that finds and sets the service item object needed for some actions
   def set_service
     @service = AvailableService.find(params[:id])
   end

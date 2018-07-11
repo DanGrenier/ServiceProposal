@@ -41,18 +41,20 @@
           <%= proposal.proposal_status_icon%>
           
         </td>
-     
+        <!-- Edit Proposal Link -->
         <td class = "text-nowrap" align="center">
           <%=link_to edit_proposal_path(id:proposal.id) do %> 
             <i class="fa fa-edit fa-2x" aria-hidden="true"  data-html = "true" data-toggle="tooltip" title="Edit this proposal" data-placement ="right" data-container="body"></i>
           <%end%>
           &nbsp;
           &nbsp;
+          <!-- View Proposal Link -->
             <%=link_to proposal_path(id:proposal.id) do %> 
               <i class="fa fa-file-text-o fa-2x" aria-hidden="true"  data-html = "true" data-toggle="tooltip" title="View proposal document" data-placement ="right" data-container="body"></i>
             <%end%>
           &nbsp;
-          &nbsp;      
+          &nbsp;
+          <!-- Delete Proposal Link -->      
           <%=link_to proposal_path(proposal), method: :delete, data:{confirm: "Are you sure you want to delete this proposal?"} do %> 
             <i class="fa fa-trash fa-2x" aria-hidden="true"  data-html = "true" data-toggle="tooltip" title="Delete this proposal" data-placement ="right" data-container="body"></i>
           <%end%>

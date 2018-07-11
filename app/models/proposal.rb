@@ -1,6 +1,29 @@
 class Proposal < ActiveRecord::Base
+  #t.integer  "user_id"
+  #t.integer  "service_type"
+  #t.string   "business_name"
+  #t.string   "address"
+  #t.string   "address2"
+  #t.string   "city"
+  #t.string   "state"
+  #t.string   "zip"
+  #t.string   "phone"
+  #t.string   "contact_first"
+  #t.string   "contact_last"
+  #t.string   "contact_email"
+  #t.integer  "business_type"
+  #t.decimal  "fee_tier1"
+  #t.decimal  "fee_tier2"
+  #t.decimal  "fee_tier3"
+  #t.decimal  "actual_fee"
+  #t.text     "proposal_text"
+  #t.integer  "proposal_status"
+  #t.datetime "created_at"
+  #t.datetime "updated_at"
+
   belongs_to :user
   has_many :proposal_details, :dependent => :destroy
+  #Make sure required fields are filled
   validates_presence_of :service_type, :message => "Please Choose a Proposal Type"
   validates_presence_of :business_name, :message => "Please Enter the Business Name"
   validates_presence_of :address, :message => "The Address Can't be Left Blank"
@@ -15,8 +38,11 @@ class Proposal < ActiveRecord::Base
   validates_numericality_of :fee_tier1, :message => "Please Enter a Valid Amount for Tier 1 Pricing"
   validates_numericality_of :fee_tier2, :message => "Please Enter a Valid Amount for Tier 2 Pricing"
   validates_numericality_of :fee_tier3, :message => "Please Enter a Valid Amount for Tier 3 Pricing"
-  validates_associated :proposal_details, :message => "There is an Issue in Proposal Detail"
+  #Validates contact email with the proper RegEx
   validates :contact_email, :format => {:with => /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i ,:allow_blank => true, :message => 'must be a valid email'}
+  #Validates the detail before we save the master
+  validates_associated :proposal_details, :message => "There is an Issue in Proposal Detail"
+  #Accepts attributes for the proposal detail so that everything can be submitted on the same form
   accepts_nested_attributes_for :proposal_details, :allow_destroy => :true
   
   #Return The Proposal Status Description 

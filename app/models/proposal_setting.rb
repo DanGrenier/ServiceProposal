@@ -9,9 +9,12 @@ class ProposalSetting < ActiveRecord::Base
 
   belongs_to :user
   
+  #Validates requied fields
   validates_presence_of :user_id
+  #Validates return_email with proper webex
   validates_presence_of :return_email, :message => "Please Enter a Return Email Address"
   validates :return_email, :format => {:with => /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i , :allow_blank => true,:message => 'Please Enter a Valid Email Address'}
+  #Validates tier names
   validates_presence_of :tier1_name, :message => "Please Enter a Description for your Tier1"
   validates_presence_of :tier2_name, :message => "Please Enter a Description for your Tier2"
   validates_presence_of :tier3_name, :message => "Please Enter a Description for your Tier3"

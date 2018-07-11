@@ -1,13 +1,40 @@
-== README
+== Service Proposal Tool
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a customizable service proposal tool that one can use to gather potential client information and generate service proposal information with tiered pricing quotes. Service descriptions can be changed to be tailored to other business types and users can also create their own services with a custom description.
 
-Things you may want to cover:
+This tool is available to several users. This supports a context where a chain or franchisor could use this tool to let their locations generate service proposals.
 
-* Ruby version
+![image](https://user-images.githubusercontent.com/14945070/42594384-0cdaace4-851d-11e8-8574-43d0dc618a90.png)
 
-* System dependencies
+Users have instant feedback on the status of their proposals.
+
+![image](https://user-images.githubusercontent.com/14945070/42594481-419256f8-851d-11e8-9c19-69535067174d.png)
+
+Proposal templates can be created and re-used for fast proposal generation.
+
+Proposals gather potential client information along with business classification.
+
+![image](https://user-images.githubusercontent.com/14945070/42594503-4effd23e-851d-11e8-9942-91b5c1bafafc.png)
+
+Users can then select what services they want to include in each tier and then quote the price for each tier. (Tier names are customizable)
+
+![image](https://user-images.githubusercontent.com/14945070/42594517-5ba0e5b4-851d-11e8-84a8-526081c54e92.png)
+
+You can preview your proposals
+
+![image](https://user-images.githubusercontent.com/14945070/42594534-69493ea0-851d-11e8-91c4-eec0e82583ab.png)
+
+And even print them or email them as PDF documents
+
+![image](https://user-images.githubusercontent.com/14945070/42594544-75823f6e-851d-11e8-8372-a69039d3bb68.png)
+
+More technical details:
+
+* Ruby 2.2.3
+
+* Rails 4.2.4
+
+* Uses Bootstrap, FontAwesome, Thinreports, Devise, Draper,  Figaro and Will_Paginate
 
 * Configuration
 
@@ -15,9 +42,9 @@ Things you may want to cover:
 
 * Database initialization
 
-* How to run the test suite
+* To run tests: rspec 
 
-* Services (job queues, cache servers, search engines, etc.)
+
 
 * Deployment instructions
 

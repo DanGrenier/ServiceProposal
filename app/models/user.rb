@@ -3,11 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable
   has_one :proposal_setting
+  #Once a user has signed up, we create their proposal setting with default values
+  #That they can then edit
   after_create :create_proposal_setting
-
+  #Make sure user has an email
   validates :email, presence: true
+  #Make sure an email can be used only once
   validates_uniqueness_of :email
-  #Check if the Profile is complete
+  
+  #Method that returns if the profile is incomplete
   def profile_incomplete?
   	business_name.blank? || owner_first.blank? || owner_last.blank? || address.blank? || city.blank? || state.blank? || phone.blank?
   end

@@ -2,7 +2,8 @@ class PickProposalTemplatesController < ApplicationController
 before_action :authenticate_user!
 
 def index
-	@templates = ProposalTemplate.where('user_id = ?',current_user.id)
+  #Gather proporal templates for the current logged in user only
+  @templates = ProposalTemplate.where('user_id = ?',current_user.id)
 end
 
 def show
@@ -22,7 +23,5 @@ end
 
 def destroy
 end
-
-  
 
 end

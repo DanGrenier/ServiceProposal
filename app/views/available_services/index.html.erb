@@ -19,22 +19,18 @@
     <% if @services.length > 0 %>
       <% services.each do |service|%>
         <tr>
+          <!-- Service Description -->
           <td width = "60%" class="text-nowrap">
             <%=service.service_description%>
           </td>
-
+          <!-- Service Type -->
           <td style="text-align:center" width = "20%" class = "text-nowrap">
             <%= service.get_service_type_desc%>
           </td>
-          
+          <!-- Link to Edit (If this is YOUR custom code) or Review (If standard code) -->
           <td style="text-align:center" width = "20%" class = "text-nowrap">
             <%=service.link_to_edit_or_review%>
            </td>  
-          
-          
-          
-             
-           
         </tr>
       <%end%>
     <%end%>
