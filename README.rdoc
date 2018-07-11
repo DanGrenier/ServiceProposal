@@ -4,11 +4,11 @@ This is a customizable service proposal tool that one can use to gather potentia
 
 This tool is available to several users. This supports a context where a chain or franchisor could use this tool to let their locations generate service proposals.
 
-![image](https://user-images.githubusercontent.com/14945070/42594384-0cdaace4-851d-11e8-8574-43d0dc618a90.png)
+https://user-images.githubusercontent.com/14945070/42594384-0cdaace4-851d-11e8-8574-43d0dc618a90.png
 
 Users have instant feedback on the status of their proposals.
 
-![image](https://user-images.githubusercontent.com/14945070/42594481-419256f8-851d-11e8-9c19-69535067174d.png)
+https://user-images.githubusercontent.com/14945070/42594481-419256f8-851d-11e8-9c19-69535067174d.png
 
 Proposal templates can be created and re-used for fast proposal generation.
 
