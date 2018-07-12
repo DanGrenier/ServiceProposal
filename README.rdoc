@@ -38,18 +38,18 @@ More technical details:
 
 * Uses Bootstrap, FontAwesome, Thinreports, Devise, Draper,  Figaro and Will_Paginate
 
-How to Install (This assumes Postgresql is already installed and a valid user exists)
+How to Install (This assumes Postgresql is already installed and a valid user exists):
 
- * Clone repository
+* Clone repository
 
- * Copy application.yml, secrets.yml and database.yml from /Config/Sample to the /Config directory
+* Copy application.yml, secrets.yml and database.yml from /Config/Sample to the /Config directory
 
- * Change MAIL_ADDRESS and MAIL_PORT in application.yml with your mail server info (If you want to use email capabilities)
+* Change MAIL_ADDRESS and MAIL_PORT in application.yml with your mail server info (If you want to use email capabilities)
 
- * Change username and password in database.yml from your_user, your_password to your Postgres user and password
+* Change username and password in database.yml from your_user, your_password to your Postgres user and password
 
- * Change secret keys in secrets.yml if you want.
+* Change secret keys in secrets.yml if you want.
 
- * run rake db:setup (This will create the database, load the schema and seed the default values)
+* run rake db:setup (This will create the database, load the schema and seed the default values)
 
- * start the rails server
+* start the rails server
