@@ -9,9 +9,6 @@ describe User  do
   	expect(FactoryBot.build(:user, email: nil)).not_to be_valid
   end
 
-  it "is invalid without password" do 
-  	expect(FactoryBot.build(:user, password: nil)).not_to be_valid
-  end
   
   it "does not allow a duplicate email" do 
     FactoryBot.create(:user, email: "brigitte@sbp.com" , password: "patate")

@@ -77,8 +77,8 @@ describe Proposal do
   describe "test model methods" do 
     before :each do
       @proposal1 = FactoryBot.create(:proposal, proposal_status: 0)
-      @proposal2 = FactoryBot.create(:proposal, service_type: 2, proposal_status: 1)
-      @proposal3 = FactoryBot.create(:proposal, service_type: 3, proposal_status: 2)
+      @proposal2 = FactoryBot.create(:proposal, service_type: 2, proposal_status: 1, id: 2)
+      @proposal3 = FactoryBot.create(:proposal, service_type: 3, proposal_status: 2, id: 3)
     end
 
     context "service_type_desc" do
