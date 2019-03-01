@@ -1,4 +1,6 @@
 class AvailableServicesController < ApplicationController
+#This controller serves the pages where users can create view
+#and create their own custom services
 decorates_assigned :services
 before_action :authenticate_user!
 before_action :set_service , only:[:edit, :update, :destroy, :show]
@@ -45,11 +47,10 @@ end
 def destroy
   if @service.destroy
     flash[:success] = "Service Item Deleted Successfully."
-    redirect_to available_services_path
   else
     flash[:error] = @service.errors.full_messages.to_sentence
-    redirect_to available_services_path
   end
+  redirect_to available_services_path
 end
 
 private

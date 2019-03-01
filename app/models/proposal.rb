@@ -57,18 +57,7 @@ class Proposal < ActiveRecord::Base
     end
   end
   
-  #Return the Proposal Type Description
-  def service_type_desc
-    case self.service_type
-      when 1 
-        'Full Service'
-      when 2
-        'Accounting'  
-      when 3 
-        'Tax'  
-    end
-  end
-
+  
   #Method that search through the proposals from the list view
   def self.search(search, user_id)
     if search

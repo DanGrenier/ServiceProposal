@@ -43,11 +43,10 @@ class ProposalTemplatesController < ApplicationController
   def destroy
     if @template.destroy
       flash[:success] = "Template Deleted Successfully"
-      redirect_to proposal_templates_path
     else
       flash[:danger] = "Template Could Not be Deleted"
-      redirect_to proposal_templates_path
     end
+    redirect_to proposal_templates_path
   end
 
   private

@@ -90,12 +90,11 @@ class ProposalsController < ApplicationController
   def send_proposal_email
     if @proposal.contact_email.blank?
       flash[:danger] = "This Proposal does not contain a valid email address for the client. Edit the proposal to add an email address"
-      redirect_to proposals_path
     else
       ProposalMailer.email_proposal_to_prospect(@proposal,current_user).deliver_now
       flash[:success] = "Proposal Sent to #{@proposal.contact_email}"
-      redirect_to proposals_path
     end
+    redirect_to proposals_path
 
   end
 

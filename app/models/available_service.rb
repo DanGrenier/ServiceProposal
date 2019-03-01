@@ -39,17 +39,7 @@ class AvailableService < ActiveRecord::Base
     self.user_id = user_id
   end
 
-  #Method that returns a description for the service type (which is integer in the database)
-  def get_service_type_desc
-    case self.service_type
-      when 1
-        'Both'
-      when 2
-        'Accounting'
-      when 3
-        'Tax'
-    end
-  end
+  
 
   private 
     #Method that verifies if a service is used in a proposal before deleting it  
