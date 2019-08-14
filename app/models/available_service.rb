@@ -39,6 +39,16 @@ class AvailableService < ActiveRecord::Base
     self.user_id = user_id
   end
 
+  def service_type_desc
+    case service_type
+    when 1 
+      'Full Service'
+    when 2
+      'Accounting'
+    when 3
+      'Tax'
+    end
+  end
   
 
   private 

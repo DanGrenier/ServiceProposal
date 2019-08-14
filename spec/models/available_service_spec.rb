@@ -68,15 +68,15 @@ describe AvailableService do
     @service3 = FactoryBot.create(:available_service, service_type: 3)
   end
     it "Should return Both" do
-      expect(@service1.get_service_type_desc).to eq("Both")
+      expect(@service1.service_type_desc).to eq("Full Service")
     end
 
     it "Should return Accounting" do
-      expect(@service2.get_service_type_desc).to eq("Accounting")
+      expect(@service2.service_type_desc).to eq("Accounting")
     end
 
     it "Should return Tax" do
-      expect(@service3.get_service_type_desc).to eq("Tax")
+      expect(@service3.service_type_desc).to eq("Tax")
     end
 
   end

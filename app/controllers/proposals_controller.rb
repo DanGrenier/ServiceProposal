@@ -81,7 +81,7 @@ class ProposalsController < ApplicationController
     respond_to do |format|
       format.pdf do
         #Call the Proposal Drawer to generate the proposal PDF and assign it a filename
-        send_data ProposalDrawer.draw(@proposal, current_user), :filename => '@proposal#{@proposal.id}.pdf', :type => "application/pdf", :disposition => "inline"
+        send_data ProposalDrawer.draw(@proposal, current_user), :filename => "proposal_#{@proposal.id}.pdf", :type => "application/pdf", :disposition => "inline"
       end
     end
   end

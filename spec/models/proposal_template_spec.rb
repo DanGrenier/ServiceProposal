@@ -27,21 +27,7 @@ describe ProposalTemplate do
       @template2 = FactoryBot.create(:proposal_template, service_type: 2, id: 2)
       @template3 = FactoryBot.create(:proposal_template, service_type: 3, id: 3)
     end
-
-    context "service_type_desc" do
-      it "Should return Full Service" do
-        expect(@template1.service_type_desc).to eq("Full Service")
-      end
-
-      it "Should return Accounting" do 
-        expect(@template2.service_type_desc).to eq("Accounting")
-      end
-
-      it "Should return Tax" do 
-        expect(@template3.service_type_desc).to eq("Tax")
-      end
-      
-    end
+  
  
   end
 
