@@ -43,7 +43,7 @@ gem 'seed_dump'
 gem 'thinreports'
 
 # Use devise for user management
-gem 'devise', '3.5.6'
+gem 'devise', '4.7.1'
 
 gem 'gon'
 
