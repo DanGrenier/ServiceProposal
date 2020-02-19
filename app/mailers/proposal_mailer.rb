@@ -11,10 +11,9 @@ class ProposalMailer < ActionMailer::Base
     #Switched to using an ENV variable to host my own email address so that
     #sending the proposal by email (in the staging environment always works)
     #to_addresses = [proposal.contact_email]
-    to_addresses = [] 
-    to_addresses << ENV["MAIL_RECIPIENT"]
-    from_address = ENV["MAIL_RECIPIENT"]
-    recipients = to_addresses.join(',')
-	  mail(from: from_address, to: recipients, subject: "Service Proposal from #{current_user.owner_first} #{current_user.owner_last}")
+    recipient =  ENV["MAIL_RECIPIENT"]
+    from_address = ENV["MAIL_SENDER"]
+    
+	mail(from: from_address, to: recipient, subject: "Service Proposal from #{current_user.owner_first} #{current_user.owner_last}")
   end
 end
