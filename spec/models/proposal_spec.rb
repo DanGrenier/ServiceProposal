@@ -111,16 +111,46 @@ describe Proposal do
       
     end
 
-    context "get_recent_proposals" do 
+    context "recent_proposals scope" do 
       it "should return 3 proposals" do
-        props = Proposal.get_recent_proposals(@proposal1.user_id)  
+        props = Proposal.recent_proposals(@proposal1.user_id)  
         expect(props.length).to eq(3)
       end
 
       it "should return the 3 proposals we created" do
-          
-        expect( Proposal.get_recent_proposals(@proposal1.user_id)).to contain_exactly(@proposal1,@proposal2,@proposal3)
+        expect( Proposal.recent_proposals(@proposal1.user_id)).to contain_exactly(@proposal1,@proposal2,@proposal3)
       end
+    end
+
+    context "proposal_with_status scope" do 
+      it "should return 1 proposal pending" do 
+        props = Proposal.proposal_with_status(@proposal1.user_id,0)
+        expect(props.length).to eq(1)
+      end
+
+      it "should return the proper proposal pending" do 
+       expect(Proposal.proposal_with_status(@proposal1.user_id,0)).to contain_exactly(@proposal1)
+      end
+
+      it "should return 1 proposal approved" do 
+        props = Proposal.proposal_with_status(@proposal1.user_id,1)
+        expect(props.length).to eq(1)
+      end
+
+      it "should return the proper proposal approved" do 
+       expect(Proposal.proposal_with_status(@proposal1.user_id,1)).to contain_exactly(@proposal2)
+      end
+
+      it "should return 1 proposal declined" do 
+        props = Proposal.proposal_with_status(@proposal1.user_id,2)
+        expect(props.length).to eq(1)
+      end
+
+      it "should return the proper proposal declined" do 
+       expect(Proposal.proposal_with_status(@proposal1.user_id,2)).to contain_exactly(@proposal3)
+      end
+
+
     end
  
   end

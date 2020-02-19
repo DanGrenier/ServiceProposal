@@ -27,8 +27,9 @@ describe AvailableService do
   end
 
 
-  describe "Testing get_proposal_services method" do 
+  describe "Testing services_for scope" do 
     before do
+    #get the count before we add a user defined code  
     @count = AvailableService.count
     #Create bank account with the valid factory 
     @new_service = FactoryBot.create(:available_service)
@@ -38,11 +39,11 @@ describe AvailableService do
     it "should return a list" do
       @new_service = FactoryBot.create(:available_service) 
       #Make sure that the account type returns checking as it should
-      expect(AvailableService.get_proposal_services(@new_service.user_id)).to_not be_empty
+      expect(AvailableService.services_for(@new_service.user_id)).to_not be_empty
     end
 
     it "should return the proper number of items" do 
-      expect(AvailableService.get_proposal_services(@new_service.user_id).count).to eq(@count+1)
+      expect(AvailableService.services_for(@new_service.user_id).count).to eq(@count+1)
     end
 
   end

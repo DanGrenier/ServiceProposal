@@ -1,7 +1,6 @@
 class ProposalsController < ApplicationController
   decorates_assigned :proposals
   helper_method :sort_column, :sort_direction
-  before_action :authenticate_user!
   before_action :set_proposal, only:[:edit, :update, :destroy, :show, :report, :send_proposal_email]
   before_action :only_current_user, only:[:edit,:update,:destroy, :show, :report, :send_proposal_email]
 
@@ -17,7 +16,7 @@ class ProposalsController < ApplicationController
 
   def new
     if(params[:template_id])
-      @template_id = params[:template_id].to_i
+      template_id = params[:template_id].to_i
     end
     #Creates new proposal
     @proposal = Proposal.new
@@ -26,8 +25,8 @@ class ProposalsController < ApplicationController
     #Assign default proposal text from proposal settings of the user
     @proposal.proposal_text = current_user.proposal_setting.proposal_default_text
     #Call the building method accordingly if a proposal was created from a template
-    if (@template_id)
-      @proposal.build_from_template(@template_id)
+    if (template_id)
+      @proposal.build_from_template(template_id)
     else
       @proposal.build_from_scratch(current_user.id)
     end

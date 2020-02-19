@@ -45,6 +45,12 @@ class Proposal < ActiveRecord::Base
   #Accepts attributes for the proposal detail so that everything can be submitted on the same form
   accepts_nested_attributes_for :proposal_details, :allow_destroy => :true
   
+  #scope that gets the last 5 proposals to show on the main page
+  scope :recent_proposals,  -> (user_id) {all_proposals(user_id).limit(5)}
+  scope :proposal_with_status, -> (user_id,status) {where('user_id = ? and proposal_status = ?' , user_id, status)}
+  scope :all_proposals, -> (user_id) {where('user_id = ?',user_id).order('created_at DESC')}
+  scope :average_fee, -> (user_id) {proposal_with_status(user_id,1).average(:actual_fee) || 0.00}
+
   #Return The Proposal Status Description 
   def status_desc
     case self.proposal_status
@@ -78,15 +84,10 @@ class Proposal < ActiveRecord::Base
     end
   end
 
-  #Method that gets the last 5 proposals to show on the main page
-  def self.get_recent_proposals(user_id)
-    Proposal.where('user_id = ?',user_id).order('created_at DESC').limit(5)
-  end
-
   #Method that builds a proposal detail based on a selected template
   def build_from_template(template_id)
-    template_detail = ProposalTemplateDetail.get_detail(template_id)
-    if template_detail.length > 0
+    template_detail = ProposalTemplateDetail.from_template(template_id)
+    if template_detail.count > 0
       template_detail.each do |trans| 
         self.proposal_details.build(:service_id => trans.service_id, :tier1_applicable => trans.tier1_applicable , :tier2_applicable => trans.tier2_applicable, :tier3_applicable => trans.tier3_applicable)
       end
@@ -95,7 +96,7 @@ class Proposal < ActiveRecord::Base
   
   #Method that builds a proposal detail from scratch
   def build_from_scratch(user_id)
-    services = AvailableService.get_proposal_services(user_id)
+    services = AvailableService.services_for(user_id)
     services.each do |srv|
       self.proposal_details.build(:service_id => srv.id)
     end

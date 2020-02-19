@@ -2,13 +2,12 @@ class AvailableServicesController < ApplicationController
 #This controller serves the pages where users can create view
 #and create their own custom services
 decorates_assigned :services
-before_action :authenticate_user!
 before_action :set_service , only:[:edit, :update, :destroy, :show]
 before_action :only_current_user,  only:[:edit, :update, :destroy]
 
 def index
   #List services for the current logged in user only
-  @services = AvailableService.get_proposal_services(current_user.id)
+  @services = AvailableService.services_for(current_user.id)
 end
 
 def show

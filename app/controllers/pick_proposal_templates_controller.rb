@@ -1,9 +1,9 @@
 class PickProposalTemplatesController < ApplicationController
-before_action :authenticate_user!
+
 
 def index
   #Gather proporal templates for the current logged in user only
-  @templates = ProposalTemplate.where('user_id = ?',current_user.id)
+  @templates = ProposalTemplate.for_user(current_user.id)
 end
 
 def show

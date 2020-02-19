@@ -1,5 +1,5 @@
 class ProposalSettingsController < ApplicationController
-before_action :authenticate_user!
+
 before_action :profile_complete
 before_action :set_proposal_setting, only:[:edit, :update, :destroy]	
 before_action :only_current_user, only: [:edit,:update,:destroy]

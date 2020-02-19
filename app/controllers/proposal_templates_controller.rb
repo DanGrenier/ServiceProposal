@@ -1,11 +1,11 @@
 class ProposalTemplatesController < ApplicationController
-  before_action :authenticate_user!
+
   before_action :set_template, only:[:edit, :update, :destroy]
   before_action :only_current_user, only:[:edit,:update,:destroy]
 
   def index
     #Show proposal templates for current user only
-  	@templates = ProposalTemplate.where("user_id = ?", current_user.id)
+  	@templates = ProposalTemplate.for_user(current_user.id)
   end
 
   def new

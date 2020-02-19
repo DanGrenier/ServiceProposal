@@ -11,8 +11,10 @@ class ProposalTemplate < ActiveRecord::Base
   validates_presence_of :service_type, :message => "Please Enter a Template Type"
   validates_presence_of :template_description, :message => "Please Provide a Template Description"
 
+  scope :for_user, -> (user_id) {where('user_id = ?',user_id)}
+  
   def build_detail_for_user(user_id)
-  	services = AvailableService.get_proposal_services(user_id)
+  	services = AvailableService.services_for(user_id)
     services.each do |srv|
       self.proposal_template_details.build(:service_id => srv.id)
     end

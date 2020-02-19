@@ -16,11 +16,9 @@ class AvailableService < ActiveRecord::Base
   validates_presence_of :service_description, :message => "Please Enter a Service Description"
   validates_presence_of :service_type, :message => "Please Select a Service Category"
   validates_presence_of :custom_service
+  #scope that returns all proposal services (The standard ones and custom ones for current user)  
+  scope :services_for, -> (user_id) {where('(user_id = ? AND custom_service = 1) OR (custom_service = 0)',user_id)}
   
-  #Method that returns all proposal services (The standard ones and custom ones for current user)  
-  def self.get_proposal_services(user_id)
-    AvailableService.where('(user_id = ? AND custom_service = 1) OR (user_id = ? AND custom_service = 0)',user_id, -1)
-  end
 
   #Method that returns description from the internal available service id
   #Building the description in an array for quick access in the views when needed
@@ -54,7 +52,7 @@ class AvailableService < ActiveRecord::Base
   private 
     #Method that verifies if a service is used in a proposal before deleting it  
     def check_for_proposals
-      if ProposalDetail.where("service_id = ?", self.id).length > 0
+      if ProposalDetail.where("service_id = ?", self.id).exists? 
         errors.add(:base,"You can't delete a service once it's been used in a proposal")
         return false
       end
