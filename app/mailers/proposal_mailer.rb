@@ -13,7 +13,8 @@ class ProposalMailer < ActionMailer::Base
     #to_addresses = [proposal.contact_email]
     to_addresses = [] 
     to_addresses << ENV["MAIL_RECIPIENT"]
+    from_address = ENV["MAIL_RECIPIENT"]
     recipients = to_addresses.join(',')
-	  mail(from: current_user.proposal_setting.return_email, to: recipients, subject: "Service Proposal from #{current_user.owner_first} #{current_user.owner_last}")
+	  mail(from: from_address, to: recipients, subject: "Service Proposal from #{current_user.owner_first} #{current_user.owner_last}")
   end
 end
