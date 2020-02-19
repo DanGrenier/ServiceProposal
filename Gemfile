@@ -9,7 +9,7 @@ gem 'pg', '~> 0.18.4'
 gem 'pg_search'
 
 # Use Bootstrap for Styles
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap-sass', '3.4.1'
 
 # Font Awesome for icons
 gem 'font-awesome-sass', '4.6.2'
